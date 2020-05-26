@@ -272,6 +272,7 @@ body {
   position: fixed;
   z-index: 3;
   top: 0;
+  left: 0;
   width: 100%;
   background-color: #fff;
   border-bottom: 2px solid #000;
@@ -397,7 +398,7 @@ body.lock {
   color: #fff;
 }
 .navi a.active {
-  color: red;
+  color: #95c11f;
 }
 
 
@@ -672,7 +673,7 @@ body.lock {
   .head__region {
     position: fixed;
     z-index: 2;
-    width: 100%;
+    /* width: 100%; */
     background-color: #271d67;
   }
 }
@@ -1590,6 +1591,9 @@ body.lock {
   order: -1;
 }
 
+.we__title {
+  color: #271d67;
+}
 
 .arrow_carousel {
   display: flex;
@@ -1924,19 +1928,23 @@ body.lock {
 
 .team__wrap_img {
   position: relative;
-  width: 100%; /*для flex элемента*/
+  width: 140%; /*для flex элемента*/
   padding-bottom: 100%;
 }
 
 .team__desc {
   order: 2;
-  font-size: 16px;line-height: 22px;font-weight: 400;color: #1c293a;
+  font-size: 16px;line-height: 22px;font-weight: 400;
+  color: #1c293a;
 }
 
 .team__col_title {
   order: 1;
 }
 
+.team__title {
+  color: #271d67;
+}
 .team__title_3 {
   display: none;
   width: 50%;
@@ -1953,7 +1961,7 @@ body.lock {
     display: block;
   }
   .team__wrap_img {
-    padding-bottom: 50%;
+    padding-bottom: 60%;
   }
   .team__arrow_carousel {
     justify-content: flex-start;
@@ -1974,7 +1982,10 @@ body.lock {
   .team {
     padding-bottom: 0px;
   }
-  
+
+  .team__wrap_img {
+    padding-bottom: 28%;
+  }
   .team__wrap_swiper {
     display: flex;
   }
@@ -2255,6 +2266,10 @@ body.lock {
   }
 }
 
+.news__title_2 {
+  color: #271d67;
+}
+
 .news svg {
   width: 26px;
   height: 12px;
@@ -2507,6 +2522,10 @@ body.lock {
   margin-left: 0;
 }
 
+.contacts__title_2 {
+  color: #271d67;
+}
+
 .map {
   width: 100%;
   height: 460px;
@@ -2552,6 +2571,7 @@ body.lock {
 }
 
 .contacts__title {
+  margin-bottom: 20px;
   font-family: AAvanteBs;
   font-size: 40px;
   line-height: 1.2;
