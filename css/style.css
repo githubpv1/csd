@@ -1668,7 +1668,7 @@ body.lock {
   }
   .we__swiper {
     align-items:center;
-    width: 80%;
+    /* width: 80%; */width: auto;
     margin-right: 0;
     margin-top: 20px;
     margin-bottom: 50px;
@@ -1686,7 +1686,7 @@ body.lock {
 }
 @media (min-width: 992px) {
   .we__swiper {
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 0px;
   }
   
@@ -1715,6 +1715,19 @@ body.lock {
   font-weight: 400;
   color: #1c293a;
 }
+
+@media (min-width: 1200px) {
+  .we_data__row {
+    display: flex;
+  }
+  .we__data:not(:first-child) {
+    margin-left: 140px;
+  }
+  .we__desc {
+    margin-bottom: 60px;
+  }
+}
+
 
 .we__data {
   display: flex;
@@ -1836,6 +1849,7 @@ body.lock {
   .we {
     overflow: hidden;
     padding-bottom: 0;
+    padding-top: 160px;
   }
   .we__col_help::before {
     content: "";
