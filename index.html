@@ -693,7 +693,7 @@
 			<div class="container">
 				<div class="we__row row">
 
-					<div class="we__col_slider col-md-6 col-xl-3">
+					<div class="we__col_slider col-md-5 col-xl-3">
 						<div class="we__title_slider text_blue">Примеры судебных решений</div>
 
 						<div class="we__arrow_carousel arrow_carousel">
@@ -731,17 +731,19 @@
 						<div class="we__desc">Равным образом рамки и место обучения кадров влечет за собой процесс внедрения и
 							модернизации соответствующий условий активизации. С другой стороны рамки и место обучения кадров влечет за
 							собой процесс внедрения и модернизации позиций, занимаемых участниками в отношении поставленных.</div>
-						<div class="we__data">
-							<svg class="icon" aria-hidden="true">
-								<use xlink:href="#icon-portfolio"></use>
-							</svg>
-							<div class="we_data__text">завершили дел<span>657+</span></div>
-						</div>
-						<div class="we__data">
-							<svg class="icon" aria-hidden="true">
-								<use xlink:href="#icon-money"></use>
-							</svg>
-							<div class="we_data__text">списали долгов на сумму<span>18 245 625+</span></div>
+						<div class="we_data__row">
+							<div class="we__data">
+								<svg class="icon" aria-hidden="true">
+									<use xlink:href="#icon-portfolio"></use>
+								</svg>
+								<div class="we_data__text">завершили дел<span>657+</span></div>
+							</div>
+							<div class="we__data">
+								<svg class="icon" aria-hidden="true">
+									<use xlink:href="#icon-money"></use>
+								</svg>
+								<div class="we_data__text">списали долгов на сумму<span>18 245 625+</span></div>
+							</div>
 						</div>
 					</div>
 
@@ -763,15 +765,21 @@
 			<div class="team__wrap_swiper">
 				<div class="team__swiper">
 					<div class="swiper-wrapper">
-						<div class=" swiper-slide">
-							<div class="team__wrap_img ">
-								<img class="img_cover" src="img/head_bg1.jpg" alt="">
-							</div>
+						<div class="team__slide swiper-slide">
+							<picture>
+								<source media="(min-width: 1200px)" srcset="img/team/1_xl.jpg" type="image/jpeg">
+								<source media="(min-width: 768px)" srcset="img/team/1_md.jpg" type="image/jpeg">
+								<source media="(max-width: 768px)"  srcset="img/team/1_sm.jpg" type="image/jpeg">
+								<img class="img_cover" src="img/team/1_xl.jpg" alt="команда">	
+							</picture>	
 						</div>
-						<div class="swiper-slide">
-							<div class="team__wrap_img ">
-								<img class="img_cover" src="img/how_bg.jpg" alt="">
-							</div>
+						<div class="team__slide swiper-slide">
+							<picture>
+								<source media="(min-width: 1200px)" srcset="img/team/1_xl.jpg" type="image/jpeg">
+								<source media="(min-width: 768px)" srcset="img/team/1_md.jpg" type="image/jpeg">
+								<source media="(max-width: 768px)"  srcset="img/team/2_sm.jpg" type="image/jpeg">
+								<img class="img_cover" src="img/team/1_xl.jpg" alt="команда">	
+							</picture>
 						</div>
 					</div>
 				</div>
@@ -967,7 +975,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="text_blue col-12">будь в курсе</div>
-					<div class="title_2 col-md-7">Последние новости</div>
+					<div class="news__title_2 title_2 col-md-7">Последние новости</div>
 					<div class="news__col_news col-md-5">
 						<a href="#!" class="news__link_more">все новости
 							<svg class="icon_news icon" aria-hidden="true">
@@ -1038,8 +1046,9 @@
 									<a href="#!" class="news__item news__item_smail">
 										<div class="news__desc">
 											<div class="news__date">21 мая 2019</div>
-											<div class="news__title_smail">Таким образом постоянное
-												обеспечение
+											<div class="news__title_smail">Не следует, однако забывать, что 
+												консультация с широким активом
+												представляет собой
 												<svg class="icon" aria-hidden="true">
 													<use xlink:href="#icon-arrow"></use>
 												</svg>
@@ -1091,7 +1100,7 @@
 				<div class="contacts__wrap">
 					<div class="contacts__container_title container">
 						<div class="text_blue">наши</div>
-						<div class="title_2">Контакты</div>
+						<div class="contacts__title_2 title_2">Контакты</div>
 					</div>
 					<div id="map" class="map"></div>
 				</div>
