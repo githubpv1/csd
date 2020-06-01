@@ -424,3 +424,30 @@ if(window.innerWidth < 768) {
 }
 
 
+var swipe = document.querySelector('body');
+
+var touchstartY = 0;
+var touchendY = 0;
+
+swipe.addEventListener('touchstart', function (event) {
+	// touchstartY = event.changedTouches[0].screenY;
+	// touchstartY = event.touches[0].screenY;
+	
+	console.log(touchstartY);
+}, false);
+
+swipe.addEventListener('touchend', function (event) {
+	// touchendY = event.changedTouches[0].screenY;
+	// touchendY = event.touches[0].screenY;
+	touchstartY = event.changedTouches[0].screenY;
+	
+	console.log(touchendY);
+  // handleSwipe();
+}, false);
+
+// function handleSwipe() {
+//   var swiped = 'swiped: ';
+//   if (touchendY > touchstartY) {
+//     alert(swiped + 'down!');
+//   }
+// }

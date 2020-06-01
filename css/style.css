@@ -1584,6 +1584,7 @@ body.lock {
   display: flex;
   flex-wrap: wrap;
   align-items:center;
+  margin-left: auto;
 }
 .we__col_title {
   order: -1;
@@ -1662,6 +1663,10 @@ body.lock {
   margin-bottom: 12px;
   border-radius: 5.0px;
   border: 10px solid #e8f0f7;
+}
+
+.we__img {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -2033,6 +2038,7 @@ body.lock {
 @media (min-width: 768px) {
   .team__row {
     display: block;
+    padding-top: 40px;
   }
   .team__arrow_carousel {
     justify-content: flex-start;
@@ -2837,7 +2843,7 @@ body.lock {
 .dialog-backdrop {
   display: none;
   position: fixed;
-  z-index: 9;
+  z-index: 20;
   overflow-y: auto;
   top: 0px;
   right: 0px;
