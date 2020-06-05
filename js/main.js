@@ -26,6 +26,114 @@ focusLose();
 
 // ===== vanillajs-scrollspy ==========
 
+function vanillaScrollspy(nav, offset, speed, easing) {
+
+  var menu = document.querySelector(nav);
+  var menuHeight;
+  if (offset) { //если есть значение селектора
+    var head = document.querySelector(offset);
+
+    if (head) { //если есть объект по заданному селектору
+      menuHeight = head.clientHeight;
+    } else {
+      menuHeight = 0;
+    }
+  } else {
+    menuHeight = 0;
+  }
+
+  function fncAnimation(callback) {
+    window.setTimeout(callback, 1000 / 60);
+  };
+
+  window.requestAnimFrame = function () {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || fncAnimation;
+  }();
+
+  function scrollToY(height, speed, easing) {
+    var scrollTargetY = height || 0;
+    var speed = speed || 2000;
+    var easing = easing || 'easeOutSine';
+
+    var scrollY = window.pageYOffset;
+    var currentTime = 0;
+    var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, 0.8));
+
+    var easingEquations = {
+      easeOutSine: function easeOutSine(pos) {
+        return Math.sin(pos * (Math.PI / 2));
+      },
+      easeInOutSine: function easeInOutSine(pos) {
+        return -0.5 * (Math.cos(Math.PI * pos) - 1);
+      },
+      easeInOutQuint: function easeInOutQuint(pos) {
+        /* eslint-disable-next-line */
+        if ((pos /= 0.5) < 1) {
+          return 0.5 * Math.pow(pos, 5);
+        }
+        return 0.5 * (Math.pow(pos - 2, 5) + 2);
+      }
+    };
+
+    function tick() {
+      currentTime += 1 / 60;
+      var p = currentTime / time;
+      var t = easingEquations[easing](p);
+
+      if (p < 1) {
+        window.requestAnimFrame(tick);
+        window.scrollTo(0, scrollY + (scrollTargetY - scrollY) * t);
+      } else {
+        window.scrollTo(0, scrollTargetY);
+      }
+    }
+
+    tick();
+  };
+
+  function menuControl(menu) {
+    var i = void 0;
+    var currLink = void 0;
+    var refElement = void 0;
+    var links = menu.querySelectorAll('a[href^="#"]');
+    var scrollPos = window.scrollY || document.documentElement.scrollTop;
+
+    scrollPos += (menuHeight + 2);
+
+    for (i = 0; i < links.length; i += 1) {
+      currLink = links[i];
+      refElement = document.querySelector(currLink.getAttribute('href'));
+
+      if (refElement.offsetTop <= scrollPos && refElement.offsetTop + refElement.clientHeight > scrollPos) {
+        currLink.classList.add('active');
+      } else {
+        currLink.classList.remove('active');
+      }
+    }
+  };
+
+  function animated(menu, speed, easing) {
+    function control(e) {
+      e.preventDefault();
+      var target = document.querySelector(this.hash);
+      scrollToY(target.offsetTop - menuHeight, speed, easing);
+    }
+
+    var i = void 0;
+    var link = void 0;
+    var links = menu.querySelectorAll('a[href^="#"]');
+
+    for (i = 0; i < links.length; i += 1) {
+      link = links[i];
+      link.addEventListener('click', control);
+    }
+  };
+
+  animated(menu, speed, easing);
+  document.addEventListener('scroll', function () {
+    menuControl(menu);
+  });
+};
 vanillaScrollspy('.nav__list', '.head__top', 10000);
 
 
@@ -46,8 +154,8 @@ function nav() {
 		lock.classList.add('lock');
 	}
 
-	navClose.onclick = function () {
-		this.classList.remove('active');
+	function close() {
+		navClose.classList.remove('active');
 		nav.classList.remove('active');
 		navList.classList.remove('active');
 		socials.classList.remove('active');
@@ -55,9 +163,68 @@ function nav() {
 		regionList.style.display = "none";
 	}
 
+	navClose.addEventListener('click', close);
+
+	var links = navList.querySelectorAll('a[href^="#"]');
+	for (i = 0; i < links.length; i += 1) {
+		links[i].addEventListener('click', close);
+	}
+
+	// ===== swipe =====
+
+	function swipe(elem) {
+
+		var touchstartX = 0;
+		var touchstartY = 0;
+		var touchendX = 0;
+		var touchendY = 0;
+		var treshold = 10;
+
+
+		elem.addEventListener('touchstart', function (event) {
+			touchstartX = event.changedTouches[0].screenX;
+			touchstartY = event.changedTouches[0].screenY;
+		}, false);
+
+		elem.addEventListener('touchend', function (event) {
+			touchendX = event.changedTouches[0].screenX;
+			touchendY = event.changedTouches[0].screenY;
+			handleGesture();
+		}, false);
+
+		function handleGesture() {
+			var dx = touchendX - touchstartX;
+			var dy = touchendY - touchstartY;
+			var abs_dx = Math.abs(dx);
+			var abs_dy = Math.abs(dy);
+
+			// если abs_dx больше abs_dy
+			// значит мы свайпим влево или вправо, но не вверх или вниз
+
+			if (abs_dx > treshold && abs_dx > abs_dy) {
+				if (dx < 0) {
+					elem.dispatchEvent(new CustomEvent("onSwipeLeft"));
+				} else {
+					elem.dispatchEvent(new CustomEvent("onSwipeRight"));
+				}
+			}
+
+			if (abs_dy > treshold && abs_dy > abs_dx) {
+				if (dy < 0) {
+					elem.dispatchEvent(new CustomEvent("onSwipeUp"));
+				} else {
+					elem.dispatchEvent(new CustomEvent("onSwipeDown"));
+				}
+			}
+		}
+	}
+	swipe(nav);
+	nav.addEventListener("onSwipeUp", close );
+
 	// logo small
+
 	var logo = document.querySelector('.logo');
-	
+
 	document.addEventListener('scroll', function () {
 		if (window.pageYOffset) {
 			logo.classList.add('scroll');
@@ -78,21 +245,21 @@ function nav() {
 		link_text = document.querySelectorAll('[data-tel_text]'),
 		local_city = localStorage.getItem('city');
 
-		
+
 	if (local_city) {
-		city.textContent  = local_city;
-		region_city.textContent  = local_city;
-		var tel = document.querySelector('[value = "'+local_city+'"]').dataset.tel;
+		city.textContent = local_city;
+		region_city.textContent = local_city;
+		var tel = document.querySelector('[value = "' + local_city + '"]').dataset.tel;
 		for (let i = 0; i < link.length; i++) {
-			link[i].setAttribute('href', 'tel:'+tel);
+			link[i].setAttribute('href', 'tel:' + tel);
 		}
 		for (let i = 0; i < link_text.length; i++) {
-			link_text[i] .textContent  = tel;
+			link_text[i].textContent = tel;
 		}
 	}
 
 	document.querySelector('[data-show]').onclick = function () {
-		if(window.innerWidth < 768) {
+		if (window.innerWidth < 768) {
 			regionList.style.display = "";
 			link[0].style.opacity = "0";
 		} else {
@@ -134,14 +301,14 @@ function nav() {
 		var checkedRadio = document.querySelector('input[name="region"]:checked');
 		if (checkedRadio) {
 			var checked_city = checkedRadio.value;
-			city.textContent  = checked_city;
+			city.textContent = checked_city;
 			region_content.style.display = "none";
 			checkedRadio.checked = false;
 		} else {
 			region_content.style.display = "none";
 		}
 
-	}
+	}	
 }
 nav();
 
@@ -150,19 +317,41 @@ nav();
 
 function showText() {
 	var elems = document.querySelectorAll('[data-id]');
+
 	for (let i = 0; i < elems.length; i++) {
 		elems[i].onclick = function () {
 			for (let i = 0; i < elems.length; i++) {
 				elems[i].classList.remove('active');
 			}
 			this.classList.add('active');
-
 			var id = this.getAttribute('data-id');
+			
 			var text = document.querySelectorAll('[data-text]');
 			for (let i = 0; i < text.length; i++) {
-				text[i].classList.remove('show');
+				var slide = text[i];
+				// text[i].classList.remove('show');
+				// text[i].style.height = "0px";
+				
+				if(!(slide.style.display == 'none')||(getComputedStyle(slide).display == 'none') ) {
+					slide.style.display = 'block';
+					var height = slide.offsetHeight;
+					slide.style.height = height + 'px';
+					setTimeout(function(){slide.style.height = '0px';},10);
+					setTimeout(function(){
+						slide.style.display = 'none';
+						slide.style.height = '';},1000);
+				}
+
 			}
-			document.querySelector('[data-text="' + id + '"]').classList.add('show');
+			var el = document.querySelector('[data-text="' + id + '"]');
+			// var height = el.offsetHeight;
+			// el.style.height = height + "px";
+			// el.classList.add('show');
+			el.style.display = 'block';
+    var height = el.offsetHeight;
+    el.style.height = '0px';
+    setTimeout(function(){el.style.height = height + 'px';},10);
+
 		}
 	}
 }
@@ -208,7 +397,7 @@ function maskInput() {
 maskInput();
 
 
-// ====== validate ========
+// ====== validate form ========
 
 function valid() {
 
@@ -287,15 +476,15 @@ function valid() {
 valid();
 
 
-/* googleMap со стоковым infowindow  ===== */
+/* ==== googleMap со стоковым infowindow  ===== */
 
 function initMap() {
 			
-	var myPos = new google.maps.LatLng(55.7992576, 37.5297314);
+	var myPos = new google.maps.LatLng(68.970665, 33.07497);
 
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: myPos,                //обязатель. Координаты центра
-		zoom: 18,                     //обязатель. Зум по умолчанию. Возможные значения от 0 до 21
+		zoom: 15,                     //обязатель. Зум по умолчанию. Возможные значения от 0 до 21
 		disableDefaultUI: true ,    //убирает элементы управления
 		//styles: styles_Snazzy      //стилизация цвета если задано
   });	
@@ -312,7 +501,7 @@ function initMap() {
 
   /* информационное окно с адресом */
 	var popupContent = '<div class="map_info"><span>Наш офис</span>'+
-	'<p> Электрозаводская 54,<br> БЦ Колибрис  офис. 543</p></div>',
+	'<p> Коминтерна ул., 5 д., 208 оф.<br> Мурманск г., Мурманская обл. </p></div>',
 		infowindow = new google.maps.InfoWindow({
 		content: popupContent
 	});
@@ -322,7 +511,7 @@ function initMap() {
     infowindow.open(map, marker);
 	});
 }
-//google.maps.event.addDomListener(window, "load", initMap);
+google.maps.event.addDomListener(window, "load", initMap);
 
 
 //====== swiper we =========
@@ -424,30 +613,3 @@ if(window.innerWidth < 768) {
 }
 
 
-var swipe = document.querySelector('body');
-
-var touchstartY = 0;
-var touchendY = 0;
-
-swipe.addEventListener('touchstart', function (event) {
-	// touchstartY = event.changedTouches[0].screenY;
-	// touchstartY = event.touches[0].screenY;
-	
-	console.log(touchstartY);
-}, false);
-
-swipe.addEventListener('touchend', function (event) {
-	// touchendY = event.changedTouches[0].screenY;
-	// touchendY = event.touches[0].screenY;
-	touchstartY = event.changedTouches[0].screenY;
-	
-	console.log(touchendY);
-  // handleSwipe();
-}, false);
-
-// function handleSwipe() {
-//   var swiped = 'swiped: ';
-//   if (touchendY > touchstartY) {
-//     alert(swiped + 'down!');
-//   }
-// }
