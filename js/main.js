@@ -313,49 +313,65 @@ function nav() {
 nav();
 
 
-// ====== select text (img) ========
+// ====== select slide text (img) ========
 
 function showText() {
 	var elems = document.querySelectorAll('[data-id]');
 
 	for (let i = 0; i < elems.length; i++) {
 		elems[i].onclick = function () {
+
 			for (let i = 0; i < elems.length; i++) {
 				elems[i].classList.remove('active');
 			}
+
 			this.classList.add('active');
 			var id = this.getAttribute('data-id');
-			
 			var text = document.querySelectorAll('[data-text]');
+
 			for (let i = 0; i < text.length; i++) {
-				var slide = text[i];
-				// text[i].classList.remove('show');
-				// text[i].style.height = "0px";
-				
-				if(!(slide.style.display == 'none')||(getComputedStyle(slide).display == 'none') ) {
-					slide.style.display = 'block';
-					var height = slide.offsetHeight;
-					slide.style.height = height + 'px';
-					setTimeout(function(){slide.style.height = '0px';},10);
-					setTimeout(function(){
-						slide.style.display = 'none';
-						slide.style.height = '';},1000);
-				}
-
+				var el = text[i];
+				slideUp.call(el);
 			}
-			var el = document.querySelector('[data-text="' + id + '"]');
-			// var height = el.offsetHeight;
-			// el.style.height = height + "px";
-			// el.classList.add('show');
-			el.style.display = 'block';
-    var height = el.offsetHeight;
-    el.style.height = '0px';
-    setTimeout(function(){el.style.height = height + 'px';},10);
 
+			setTimeout(function () {
+				var elem = document.querySelector('[data-text="' + id + '"]');
+				slideDown.call(elem);
+			}, 540);
+		}
+	}
+
+	function slideDown() {
+		if ((this.style.display == 'none') || (getComputedStyle(this).display == 'none')) {
+			this.style.overflow = 'hidden';
+			this.style.display = 'block';
+			var height = this.offsetHeight;
+			this.style.height = '0px';
+			setTimeout(function (elem) {
+				elem.style.height = height + 'px';
+			}, 20, this);
+		}
+	}
+
+	function slideUp() {
+		if (!((this.style.display == 'none') || (getComputedStyle(this).display == 'none'))) {
+			this.style.overflow = 'hidden';
+			var height = this.offsetHeight;
+			this.style.height = height + 'px';
+			setTimeout(function (elem) {
+				elem.style.height = '0px';
+			}, 20, this);
+			setTimeout(function (elem) {
+				elem.style.display = 'none';
+				elem.style.height = '';
+			}, 540, this);
 		}
 	}
 }
+
 showText();
+
+
 
 
 // ====== Inputmask ========
