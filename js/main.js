@@ -104,7 +104,7 @@ function vanillaScrollspy(nav, offset, speed, easing) {
       currLink = links[i];
       refElement = document.querySelector(currLink.getAttribute('href'));
 
-      if (refElement.offsetTop <= scrollPos && refElement.offsetTop + refElement.clientHeight > scrollPos) {
+      if (refElement &&(refElement.offsetTop <= scrollPos && refElement.offsetTop + refElement.clientHeight > scrollPos)) {
         currLink.classList.add('active');
       } else {
         currLink.classList.remove('active');
@@ -131,7 +131,7 @@ function vanillaScrollspy(nav, offset, speed, easing) {
 
   animated(menu, speed, easing);
   document.addEventListener('scroll', function () {
-    menuControl(menu);
+			menuControl(menu);
   });
 };
 vanillaScrollspy('.nav__list', '.head__top', 10000);
@@ -379,13 +379,15 @@ showText();
 function maskInput() {
 
 	var tel = document.getElementById('tel');
-	Inputmask({
-		"mask": "+7(999) 999-9999"
-	}).mask(tel);
+	if (tel) {
+		Inputmask({"mask": "+7(999) 999-9999"}).mask(tel);
+	}
+	
 	var tel2 = document.getElementById('tel2');
-	Inputmask({
-		"mask": "+7(999) 999-9999"
-	}).mask(tel2);
+	if (tel2) {
+		Inputmask({"mask": "+7(999) 999-9999"}).mask(tel2);
+	}
+	
 
 	//email mask
 
@@ -407,8 +409,12 @@ function maskInput() {
 		}
 	}
 
-	Inputmask(mailMask).mask(email_in);
-	Inputmask(mailMask).mask(email_in2);
+	if (email_in) {
+		Inputmask(mailMask).mask(email_in);
+	}
+	if (email_in2) {
+		Inputmask(mailMask).mask(email_in2);
+	}
 }
 maskInput();
 
@@ -417,13 +423,20 @@ maskInput();
 
 function valid() {
 
-	var names1 = document.forms['form1']['name'];
-	var phone1 = document.forms['form1']['phone'];
-	var email1 = document.forms['form1']['email'];
+	var form1 = document.forms['form1'];
+	if (form1) {
+		var names1 = form1['name'];
+		var phone1 = form1['phone'];
+		var email1 = form1['email'];
+	}
 
-	var names2 = document.forms['form2']['name'];
-	var phone2 = document.forms['form2']['phone'];
-	var email2 = document.forms['form2']['email'];
+	var form2 = document.forms['form2'];
+	if (form2) {
+		var names2 = form2['name'];
+		var phone2 = form2['phone'];
+		var email2 = form2['email'];
+	}
+	
 
 	var data = {
 		Form2: [names2, phone2, email2],
@@ -433,8 +446,11 @@ function valid() {
 	for (let key in data) {
 		if (data.hasOwnProperty(key)) {
 			for (let i = 0; i < data[key].length; i++) {
-				data[key][i].addEventListener('blur', check);
-				data[key][i].addEventListener('focus', rezet);
+				if (data[key][i]) {
+					data[key][i].addEventListener('blur', check);
+					data[key][i].addEventListener('focus', rezet);
+				}
+				
 			}
 		}
 	}
@@ -460,8 +476,13 @@ function valid() {
 	}
 
 
-	form1.addEventListener('submit', validate);
-	form2.addEventListener('submit', validate);
+	if (form1) {
+		form1.addEventListener('submit', validate);
+	}
+	if (form2) {
+		form2.addEventListener('submit', validate);
+	}
+	
 
 	function validate(event) {
 		var nameForm = this.getAttribute('name');
@@ -527,7 +548,7 @@ function initMap() {
     infowindow.open(map, marker);
 	});
 }
-google.maps.event.addDomListener(window, "load", initMap);
+//google.maps.event.addDomListener(window, "load", initMap);
 
 
 //====== swiper we =========
@@ -629,3 +650,44 @@ if(window.innerWidth < 768) {
 }
 
 
+
+//====== swiper article =========
+
+var mySwiper = new Swiper('.art__swiper', {
+  loop: true,
+	//autoHeight: true,
+	direction: 'vertical',
+	spaceBetween: 20,
+	slidesPerView: 2,
+	// slidesPerColumn: 2,
+	grabCursor: true,
+	navigation: {
+		nextEl: '.art__next_slide',
+		prevEl: '.art__prev_slide',
+	},
+	breakpoints: {
+		768: {
+			slidesPerView: 2,
+			slidesPerColumn: 1,
+			direction: 'horizontal',
+		},
+	},
+});
+
+//====== swiper art-news =========
+
+if(window.innerWidth < 768) {
+	var mySwiper = new Swiper ('.art-news__swiper', {
+		//spaceBetween: 20,
+		loop: true,
+		grabCursor: true,
+		navigation: {
+			nextEl: '.art-news__next_slide',
+			prevEl: '.art-news__prev_slide',
+		},
+		pagination: {
+			el: '.art-news__swiper_pagination',
+			clickable: true,
+		}
+	});
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+
+  <!-- Demo styles -->
+  <style>
+
+
+
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    .swiper-container {
+      /* width: 100%; */
+      /* height: 50%; */
+      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      height: calc((100% - 30px) / 2);
+      /* height: 300px; */
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-slide-active {
+  background-color: #ff0;
+}
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="swiper-container sw">
+    <div class="swiper-wrapper">
+      <div class="art__swiper_slide swiper-slide __col">1 Равным образом постоянный количественный рост</div>
+								<div class="art__swiper_slide swiper-slide __col">2 Не следует, однако забывать, что начало повседневной работы по формированию позиции</div>
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+      <!-- <div class="swiper-slide">Slide 10</div> -->
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.sw', {
+      // slidesPerView: 3,
+      slidesPerColumn: 2,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+
+<section class="article__swiper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="art__swiper swiper-container">
+
+          <div class="art__arrow_carousel arrow_carousel">
+
+            <button class="art__prev_slide " aria-label="Previous">
+              <svg class="icon_slide icon" aria-hidden="true">
+                <use xlink:href="#icon-arrow"></use>
+              </svg>Предыдущая статья
+            </button>
+
+            <button class="art__next_slide " aria-label="Next">Следующая статья
+              <svg class="icon_slide icon" aria-hidden="true">
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+            </button>
+          </div>
+
+          
+
+          <div class="swiper-wrapper">
+            <div class="art__swiper_slide swiper-slide __col">1 Равным образом постоянный количественный рост</div>
+            <div class="art__swiper_slide swiper-slide __col">2 Не следует, однако забывать, что начало повседневной работы по формированию позиции</div>
+            <div class="art__swiper_slide swiper-slide __col">3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
+            <div class="art__swiper_slide swiper-slide __col">4 однако забывать, что начало повседневной работы по формированию позиции</div>
+            <div class="art__swiper_slide swiper-slide __col">5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
+            <div class="art__swiper_slide swiper-slide __col">6 однако забывать, что начало повседневной работы по формированию позиции</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+  // loop: true,
+	//autoHeight: true,
+	spaceBetween: 20,
+	// slidesPerView: 2,
+	slidesPerColumn: 2,
+	// grabCursor: true,
+	navigation: {
+		nextEl: '.art__next_slide',
+		prevEl: '.art__prev_slide',
+	},
+	// breakpoints: {
+	// 	768: {
+	// 		slidesPerView: 2,
+	// 		slidesPerColumn: 1,
+			
+	// 	},
+	// },
+});
+</script>
+
+</body>
+
+</html>
