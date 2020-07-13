@@ -259,22 +259,6 @@ body {
 
 /* ===== head ===== */
 
-/* .anchor {
-  position: absolute;
-  left: 0;
-  top: -100px;
-} */
-
-.head {
-  margin-top: 80px;
-}
-
-@media (min-width: 768px) {
-  .head {
-    margin-top: 110px;
-  }
-}
-
 .head__top {
   position: fixed;
   z-index: 20;
@@ -3707,5 +3691,149 @@ td {
 @media (min-width: 1200px) {
   .d-xl-block {
     display: block;
+  }
+}
+
+
+/* ===== allnews ===== */
+
+
+.allnews {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.allnews::before {
+  content: "";
+  display: block;
+  flex-grow: 1;
+  background-color: #271d67;
+}
+
+.allnews::after {
+  content: "";
+  display: block;
+  flex-grow: 1;
+}
+
+.allnews__wrap {
+  flex: 0 1 1420px;
+  padding: 60px 0px 40px 0px;
+  background: url(../img/news_bg.jpg) no-repeat center / cover;
+}
+
+.allnews__row {
+  justify-content: space-between;
+}
+
+.art__title_2 {
+  margin-bottom: 20px;
+  font-family: AAvanteBs;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #7fc200;
+}
+
+.allnews__desc {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+  color: #86aac0;
+}
+
+.allnews__text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #0c2438;
+}
+@media (min-width: 768px) {
+  .allnews__wrap {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .allnews__breadcrumb {
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+
+  .art__title_2 {
+    margin-bottom: 30px;
+    font-size: 50px;
+  }
+
+  .allnews__socials {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .allnews__col {
+    margin-left: 16%;
+  }
+  .allnews__socials {
+    margin-right: 10px;
+  }
+}
+
+.allnews-body {
+  margin-bottom: 80px;
+}
+
+.pagin {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagin li {
+  margin: 0px 5px;
+}
+
+.pagin a,
+.pagin span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #90a8be;
+  border-radius: 5.0px;
+}
+
+.pagin a {
+  background-color: #e9f0f6;
+}
+
+.pagin a.active {
+  color: #95c11f;
+  background-color: #271d67;
+  pointer-events: none;
+  cursor: default;
+}
+
+@media (pointer: fine),
+(min-width:0\0) {
+  .pagin a:hover:not(.active) {
+    color: #e9f0f6;
+    background-color: #90a8be;
+  }
+}
+
+.pagin a:active {
+  background-color: #271d67;
+}
+
+@media (min-width: 768px) {
+
+  .pagin a,
+  .pagin span {
+    width: 60px;
+    height: 60px;
   }
 }

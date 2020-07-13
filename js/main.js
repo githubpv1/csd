@@ -34,7 +34,9 @@ function vanillaScrollspy(nav, offset, speed, easing) {
     var head = document.querySelector(offset);
 
     if (head) { //если есть объект по заданному селектору
-      menuHeight = head.clientHeight;
+			menuHeight = head.clientHeight;
+			// отступ под меню
+			document.body.style.paddingTop = menuHeight + 'px';
     } else {
       menuHeight = 0;
     }
@@ -650,7 +652,6 @@ if(window.innerWidth < 768) {
 }
 
 
-
 //====== swiper article =========
 
 var mySwiper = new Swiper('.art__swiper', {
@@ -673,6 +674,7 @@ var mySwiper = new Swiper('.art__swiper', {
 		},
 	},
 });
+
 
 //====== swiper art-news =========
 
