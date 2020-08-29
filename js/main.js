@@ -34,7 +34,6 @@ function scrollMenu(nav, offset, speed, easing) {
 
 	var menu = document.querySelector(nav);
 	var menuHeight;
-	
 	if (offset) { //если есть значение селектора
 		var head = document.querySelector(offset);
 	} else {
