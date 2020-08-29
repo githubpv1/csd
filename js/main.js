@@ -266,10 +266,10 @@ function nav() {
 		city.textContent = local_city;
 		region_city.textContent = local_city;
 		var tel = document.querySelector('[value = "' + local_city + '"]').dataset.tel;
-		for (let i = 0; i < link.length; i++) {
+		for (var i = 0; i < link.length; i++) {
 			link[i].setAttribute('href', 'tel:' + tel);
 		}
-		for (let i = 0; i < link_text.length; i++) {
+		for (var i = 0; i < link_text.length; i++) {
 			link_text[i].textContent = tel;
 		}
 	}
@@ -293,10 +293,10 @@ function nav() {
 		if (checkedRadio) {
 			var checked_city = checkedRadio.value;
 			var tel = checkedRadio.dataset.tel;
-			for (let i = 0; i < link.length; i++) {
+			for (var i = 0; i < link.length; i++) {
 				link[i].setAttribute('href', 'tel:' + tel);
 			}
-			for (let i = 0; i < link_text.length; i++) {
+			for (var i = 0; i < link_text.length; i++) {
 				link_text[i].textContent = tel;
 			}
 
@@ -334,10 +334,10 @@ nav();
 function showText() {
 	var elems = document.querySelectorAll('[data-id]');
 
-	for (let i = 0; i < elems.length; i++) {
+	for (var i = 0; i < elems.length; i++) {
 		elems[i].onclick = function () {
 
-			for (let i = 0; i < elems.length; i++) {
+			for (var i = 0; i < elems.length; i++) {
 				elems[i].classList.remove('active');
 			}
 
@@ -345,7 +345,7 @@ function showText() {
 			var id = this.getAttribute('data-id');
 			var text = document.querySelectorAll('[data-text]');
 
-			for (let i = 0; i < text.length; i++) {
+			for (var i = 0; i < text.length; i++) {
 				var el = text[i];
 				slideUp.call(el);
 			}
@@ -459,9 +459,9 @@ function valid() {
 		Form1: [names1, phone1, email1]
 	}
 
-	for (let key in data) {
+	for (var key in data) {
 		if (data.hasOwnProperty(key)) {
-			for (let i = 0; i < data[key].length; i++) {
+			for (var i = 0; i < data[key].length; i++) {
 				if (data[key][i]) {
 					data[key][i].addEventListener('blur', check);
 					data[key][i].addEventListener('focus', rezet);
@@ -505,11 +505,11 @@ function valid() {
 		var checkBox = document.forms[nameForm]['checkbox'];
 
 		if (checkBox.checked) {
-			let elem = data[nameForm];
+			var elem = data[nameForm];
 
-			for (let i = 0; i < elem.length; i++) {
-				let input = elem[i];
-				let error = input.nextElementSibling;
+			for (var i = 0; i < elem.length; i++) {
+				var input = elem[i];
+				var error = input.nextElementSibling;
 
 				if (!input.validity.valid) {
 					error.classList.add('error');
