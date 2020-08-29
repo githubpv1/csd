@@ -1,142 +1,154 @@
 objectFitImages(); //IE polyfill
 
 
-// ===== focus ==========
+//сбрасываем :focus при клике для a и button, но оставляем с клавиатуры
 
 function focusLose() {
-	var isMouseDown = false; 
+	var isMouseDown = false;
 	var button = document.querySelectorAll('a, button');
 
-	for (let i = 0; i < button.length; i++) {
-		button[i].addEventListener('mousedown', function () {
+	function func() {
+		if (isMouseDown) {
+			this.blur();
+		}
+	}
+
+	for (var i = 0; i < button.length; i++) {
+		var el = button[i];
+		el.addEventListener('mousedown', function () {
 			isMouseDown = true;
 		});
-		button[i].addEventListener('mouseup', function () {
+		el.addEventListener('mouseup', function () {
 			isMouseDown = false;
 		});
-		button[i].addEventListener('focus', function () {
-			if (isMouseDown) {
-				button[i].blur();
-			}
-		});
+		el.addEventListener('focus', func.bind(el));
 	}
 }
 focusLose();
 
 
+
 // ===== vanillajs-scrollspy ==========
 
-function vanillaScrollspy(nav, offset, speed, easing) {
+function scrollMenu(nav, offset, speed, easing) {
 
-  var menu = document.querySelector(nav);
-  var menuHeight;
-  if (offset) { //если есть значение селектора
-    var head = document.querySelector(offset);
+	var menu = document.querySelector(nav);
+	var menuHeight;
+	if (offset) { 
+		var head = document.querySelector(offset);
 
-    if (head) { //если есть объект по заданному селектору
+		if (head) { 
 			menuHeight = head.clientHeight;
-			// отступ под меню
-			document.body.style.paddingTop = menuHeight + 'px';
-    } else {
-      menuHeight = 0;
-    }
-  } else {
-    menuHeight = 0;
-  }
+			
+		} else {
+			menuHeight = 0;
+		}
+	} else {
+		menuHeight = 0;
+	}
 
-  function fncAnimation(callback) {
-    window.setTimeout(callback, 1000 / 60);
-  };
+	function fncAnimation(callback) {
+		window.setTimeout(callback, 1000 / 60);
+	};
 
-  window.requestAnimFrame = function () {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || fncAnimation;
-  }();
+	window.requestAnimFrame = function () {
+		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || fncAnimation;
+	}();
 
-  function scrollToY(height, speed, easing) {
-    var scrollTargetY = height || 0;
-    var speed = speed || 2000;
-    var easing = easing || 'easeOutSine';
 
-    var scrollY = window.pageYOffset;
-    var currentTime = 0;
-    var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, 0.8));
+	function scrollToY(height, speed, easing) {
+		var scrollTargetY = height || 0;
+		scrollTargetY += 2;
+		var speed = speed || 2000;
+		var easing = easing || 'easeOutSine';
 
-    var easingEquations = {
-      easeOutSine: function easeOutSine(pos) {
-        return Math.sin(pos * (Math.PI / 2));
-      },
-      easeInOutSine: function easeInOutSine(pos) {
-        return -0.5 * (Math.cos(Math.PI * pos) - 1);
-      },
-      easeInOutQuint: function easeInOutQuint(pos) {
-        /* eslint-disable-next-line */
-        if ((pos /= 0.5) < 1) {
-          return 0.5 * Math.pow(pos, 5);
-        }
-        return 0.5 * (Math.pow(pos - 2, 5) + 2);
-      }
-    };
+		var scrollY = window.pageYOffset;
+		var currentTime = 0;
+		var time = Math.max(0.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, 0.8));
 
-    function tick() {
-      currentTime += 1 / 60;
-      var p = currentTime / time;
-      var t = easingEquations[easing](p);
+		var easingEquations = {
+			easeOutSine: function easeOutSine(pos) {
+				return Math.sin(pos * (Math.PI / 2));
+			},
+			easeInOutSine: function easeInOutSine(pos) {
+				return -0.5 * (Math.cos(Math.PI * pos) - 1);
+			},
+			easeInOutQuint: function easeInOutQuint(pos) {
+				/* eslint-disable-next-line */
+				if ((pos /= 0.5) < 1) {
+					return 0.5 * Math.pow(pos, 5);
+				}
+				return 0.5 * (Math.pow(pos - 2, 5) + 2);
+			}
+		};
 
-      if (p < 1) {
-        window.requestAnimFrame(tick);
-        window.scrollTo(0, scrollY + (scrollTargetY - scrollY) * t);
-      } else {
-        window.scrollTo(0, scrollTargetY);
-      }
-    }
+		function tick() {
+			currentTime += 1 / 60;
+			var p = currentTime / time;
+			var t = easingEquations[easing](p);
 
-    tick();
-  };
+			if (p < 1) {
+				window.requestAnimFrame(tick);
+				window.scrollTo(0, scrollY + (scrollTargetY - scrollY) * t);
+			} else {
+				window.scrollTo(0, scrollTargetY);
+			}
+		}
 
-  function menuControl(menu) {
-    var i = void 0;
-    var currLink = void 0;
-    var refElement = void 0;
-    var links = menu.querySelectorAll('a[href^="#"]');
-    var scrollPos = window.scrollY || document.documentElement.scrollTop;
+		tick();
+	};
 
-    scrollPos += (menuHeight + 2);
+	/* подсветка пункта меню */
 
-    for (i = 0; i < links.length; i += 1) {
-      currLink = links[i];
-      refElement = document.querySelector(currLink.getAttribute('href'));
+	function menuControl(menu) {
+		var i = void 0;
+		var currLink = void 0;
+		var refElement = void 0;
+		var links = menu.querySelectorAll('a[href^="#"]');
+		var scrollY = window.pageYOffset;
 
-      if (refElement &&(refElement.offsetTop <= scrollPos && refElement.offsetTop + refElement.clientHeight > scrollPos)) {
-        currLink.classList.add('active');
-      } else {
-        currLink.classList.remove('active');
-      }
-    }
-  };
 
-  function animated(menu, speed, easing) {
-    function control(e) {
-      e.preventDefault();
-      var target = document.querySelector(this.hash);
-      scrollToY(target.offsetTop - menuHeight, speed, easing);
-    }
+		for (i = 0; i < links.length; i += 1) {
+			currLink = links[i];
+			refElement = document.querySelector(currLink.getAttribute('href'));
 
-    var i = void 0;
-    var link = void 0;
-    var links = menu.querySelectorAll('a[href^="#"]');
+			var box = refElement.getBoundingClientRect();
+			var topElem = box.top + scrollY - menuHeight;
 
-    for (i = 0; i < links.length; i += 1) {
-      link = links[i];
-      link.addEventListener('click', control);
-    }
-  };
+			if (topElem <= scrollY && topElem + refElement.clientHeight > scrollY) {
+				currLink.classList.add('active');
+			} else {
+				currLink.classList.remove('active');
+			}
+		}
+	};
 
-  animated(menu, speed, easing);
-  document.addEventListener('scroll', function () {
-			menuControl(menu);
-  });
+	function animated(menu, speed, easing) {
+		function control(e) {
+			e.preventDefault();
+
+			var box = document.querySelector(this.hash).getBoundingClientRect();
+			var topElem = box.top + window.pageYOffset;
+			scrollToY(topElem - menuHeight, speed, easing);
+		}
+
+		var i = void 0;
+		var link = void 0;
+		var links = menu.querySelectorAll('a[href^="#"]');
+
+		for (i = 0; i < links.length; i += 1) {
+			link = links[i];
+			link.addEventListener('click', control);
+		}
+	};
+
+	animated(menu, speed, easing);
+	document.addEventListener('scroll', function () {
+		menuControl(menu);
+	});
 };
-vanillaScrollspy('.nav__list', '.head__top', 10000);
+
+scrollMenu('.nav__list', '.head__top', 10000);
 
 
 // ===== nav ==========
@@ -676,7 +688,7 @@ var mySwiper = new Swiper('.art__swiper', {
 });
 
 
-//====== swiper art-news =========
+//====== swiper article =========
 
 if(window.innerWidth < 768) {
 	var mySwiper = new Swiper ('.art-news__swiper', {
@@ -693,3 +705,5 @@ if(window.innerWidth < 768) {
 		}
 	});
 }
+
+
