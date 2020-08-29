@@ -534,14 +534,15 @@ valid();
 function initMap() {
 			
 	var myPos = new google.maps.LatLng(68.970665, 33.07497);
-
-	var map = new google.maps.Map(document.getElementById('map'), {
+	var elem = document.getElementById('map');
+	if (elem) {
+	var map = new google.maps.Map(elem, {
 		center: myPos,                //обязатель. Координаты центра
 		zoom: 15,                     //обязатель. Зум по умолчанию. Возможные значения от 0 до 21
 		disableDefaultUI: true ,    //убирает элементы управления
 		//styles: styles_Snazzy      //стилизация цвета если задано
   });	
-  
+  }
 	/* если нужен маркер */
 	var marker = new google.maps.Marker({
 		position: myPos,              // Координаты расположения маркера.
