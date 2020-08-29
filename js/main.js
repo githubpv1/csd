@@ -34,15 +34,9 @@ function scrollMenu(nav, offset, speed, easing) {
 
 	var menu = document.querySelector(nav);
 	var menuHeight;
-	if (offset) { 
+	
+	if (offset) { //если есть значение селектора
 		var head = document.querySelector(offset);
-
-		if (head) { 
-			menuHeight = head.clientHeight;
-			
-		} else {
-			menuHeight = 0;
-		}
 	} else {
 		menuHeight = 0;
 	}
@@ -54,6 +48,7 @@ function scrollMenu(nav, offset, speed, easing) {
 	window.requestAnimFrame = function () {
 		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || fncAnimation;
 	}();
+
 
 
 	function scrollToY(height, speed, easing) {
@@ -98,7 +93,6 @@ function scrollMenu(nav, offset, speed, easing) {
 		tick();
 	};
 
-	/* подсветка пункта меню */
 
 	function menuControl(menu) {
 		var i = void 0;
@@ -107,29 +101,38 @@ function scrollMenu(nav, offset, speed, easing) {
 		var links = menu.querySelectorAll('a[href^="#"]');
 		var scrollY = window.pageYOffset;
 
-
 		for (i = 0; i < links.length; i += 1) {
 			currLink = links[i];
 			refElement = document.querySelector(currLink.getAttribute('href'));
+			if (refElement) {
+				var box = refElement.getBoundingClientRect();
 
-			var box = refElement.getBoundingClientRect();
-			var topElem = box.top + scrollY - menuHeight;
+				var topElem = box.top + scrollY - menuHeight;
 
-			if (topElem <= scrollY && topElem + refElement.clientHeight > scrollY) {
-				currLink.classList.add('active');
-			} else {
-				currLink.classList.remove('active');
+				if (topElem <= scrollY && topElem + refElement.clientHeight > scrollY) {
+					currLink.classList.add('active');
+				} else {
+					currLink.classList.remove('active');
+				}
 			}
 		}
 	};
 
 	function animated(menu, speed, easing) {
+
 		function control(e) {
 			e.preventDefault();
-
-			var box = document.querySelector(this.hash).getBoundingClientRect();
-			var topElem = box.top + window.pageYOffset;
-			scrollToY(topElem - menuHeight, speed, easing);
+			if (head) {
+				menuHeight = head.clientHeight;
+			} else {
+				menuHeight = 0;
+			}
+			var elem = document.querySelector(this.hash);
+			if (elem) {
+				var box = elem.getBoundingClientRect();
+				var topElem = box.top + window.pageYOffset;
+				scrollToY(topElem - menuHeight, speed, easing);
+			}
 		}
 
 		var i = void 0;

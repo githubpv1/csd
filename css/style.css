@@ -799,6 +799,21 @@ body.lock {
 
 
 
+.head__body {
+	margin-top: 78px;
+}
+
+@media (min-width: 768px) {
+	.head__body {
+		margin-top: 110px;
+	}
+}
+@media (min-width: 1300px) {
+	.head__body {
+		margin-top: 152px;
+	}
+}
+
 .head__we {
   /* max-width: 1670px; */
   padding: 40px 0px 20px 0px;
