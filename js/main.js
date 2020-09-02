@@ -6,6 +6,7 @@ objectFitImages(); //IE polyfill
 function focusLose() {
 	var isMouseDown = false;
 	var button = document.querySelectorAll('a, button');
+	var isDialog = document.querySelector('[role="dialog"]');
 
 	function func() {
 		if (isMouseDown) {
@@ -17,10 +18,18 @@ function focusLose() {
 		var el = button[i];
 		el.addEventListener('mousedown', function () {
 			isMouseDown = true;
+			if (isDialog) {
+				isKeyClick = false;
+			}
 		});
 		el.addEventListener('mouseup', function () {
 			isMouseDown = false;
 		});
+		if (isDialog) {
+			el.addEventListener('keydown', function () {
+				isKeyClick = true;
+			});
+		}
 		el.addEventListener('focus', func.bind(el));
 	}
 }

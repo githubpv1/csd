@@ -117,7 +117,7 @@ select {
 
 a,
 button {
-	color: inherit;
+  color: inherit;
 }
 
 button:focus,
@@ -800,18 +800,19 @@ body.lock {
 
 
 .head__body {
-	margin-top: 78px;
+  margin-top: 78px;
 }
 
 @media (min-width: 768px) {
-	.head__body {
-		margin-top: 110px;
-	}
+  .head__body {
+    margin-top: 110px;
+  }
 }
+
 @media (min-width: 1300px) {
-	.head__body {
-		margin-top: 152px;
-	}
+  .head__body {
+    margin-top: 152px;
+  }
 }
 
 .head__we {
@@ -2096,6 +2097,7 @@ body.lock {
   position: absolute;
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   font-family: 'object-fit: cover;';
 
@@ -2309,6 +2311,7 @@ body.lock {
   position: absolute;
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   font-family: 'object-fit: cover;';
 }
@@ -2346,7 +2349,7 @@ body.lock {
     float: right;
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: flex-end;
     padding-right: 30px;
     margin-top: 40px;
   }
@@ -3040,9 +3043,9 @@ body.lock {
 
 .modal__logo {
   display: none;
-  align-items: end;
+  align-items: flex-end;
   flex-shrink: 0;
-  flex-basis: 480px;
+  width: 480px;
   padding: 60px;
   background-color: #271d67;
   background-image: url(../img/logo_modal.svg);
@@ -3128,6 +3131,8 @@ body.lock {
 }
 
 input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   height: 70px;
   width: 100%;
@@ -3143,8 +3148,40 @@ input {
   box-shadow: none;
 }
 
+input::-webkit-input-placeholder {
+  color: #90a8be;
+}
+
+input::-moz-placeholder {
+  color: #90a8be;
+}
+
+input:-ms-input-placeholder {
+  color: #90a8be;
+}
+
+input::-ms-input-placeholder {
+  color: #90a8be;
+}
+
 input::placeholder {
   color: #90a8be;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+input:focus::-ms-input-placeholder {
+  color: transparent;
 }
 
 input:focus::placeholder {
@@ -3670,6 +3707,7 @@ td {
   position: absolute;
   height: 100%;
   width: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
   font-family: 'object-fit: cover;';
 }
@@ -3764,6 +3802,7 @@ td {
   line-height: 20px;
   color: #0c2438;
 }
+
 @media (min-width: 768px) {
   .allnews__wrap {
     padding-bottom: 20px;
@@ -3789,6 +3828,7 @@ td {
   .allnews__col {
     margin-left: 16%;
   }
+
   .allnews__socials {
     margin-right: 10px;
   }
@@ -3854,4 +3894,3 @@ td {
     height: 60px;
   }
 }
-
