@@ -737,6 +737,11 @@
 								<div class="swiper-wrapper">
 									<div class="we__slide swiper-slide">
 										<img class="we__img" src="img/we_slide.jpg" alt="">
+										<button class="we__btn_search" aria-label="search" onclick="openDialog('dialog-search', this)">
+											<svg class="icon_search icon">
+												<use xlink:href="#icon-search1"></use>
+											</svg>
+										</button>
 									</div>
 									<div class="we__slide swiper-slide">
 										<img class="we__img" src="img/head_bg2.jpg" alt="">
@@ -1279,6 +1284,21 @@
 		</div>
 	</div>
 
+	<div role="dialog" id="dialog-search" aria-labelledby="dialog_label" aria-modal="true" class="hidden">
+		<div class="modal__content">
+	
+			<div class=""><img src="img/search.png" alt=""></div>
+			<div class="modal_close">
+				<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
+					<svg class="icon modal__icon_cancel">
+						<use xlink:href="#icon-close"></use>
+					</svg>
+				</button>
+			</div>
+			
+		</div>  
+	</div>
+
 	<script></script>
 
 
@@ -1289,7 +1309,7 @@
 	<script src="js/ofi.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/utils.min.js"></script>
-	<script src="js/dialog.min.js"></script>
+	<script src="js/dialog.js"></script>
 	<script src="js/inputmask.min.js"></script>
 
 	<script src="js/main.js"></script>

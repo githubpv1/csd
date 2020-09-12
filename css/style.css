@@ -1813,6 +1813,37 @@ body.lock {
   }
 }
 
+.we__btn_search {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #271d67;
+  border-radius: 5px;
+}
+
+.icon_search {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+
+#dialog-search {
+  width: auto;
+}
+
+@media (pointer: fine),
+(min-width:0\0) {
+  .we__btn_search:hover {
+    background-color: #5c51a7;
+  }
+}
+
+.we__btn_search:active {
+  background-color: #393744;
+
+}
 
 
 .we__desc {
