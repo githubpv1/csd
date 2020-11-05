@@ -446,85 +446,51 @@ maskInput();
 
 // ====== validate form ========
 
-function valid() {
+(function () {
+	var reg = document.querySelectorAll('input[required]');
 
-	var form1 = document.forms['form1'];
-	if (form1) {
-		var names1 = form1['name'];
-		var phone1 = form1['phone'];
-		var email1 = form1['email'];
-	}
 
-	var form2 = document.forms['form2'];
-	if (form2) {
-		var names2 = form2['name'];
-		var phone2 = form2['phone'];
-		var email2 = form2['email'];
-	}
-	
-
-	var data = {
-		Form2: [names2, phone2, email2],
-		Form1: [names1, phone1, email1]
-	}
-
-	for (var key in data) {
-		if (data.hasOwnProperty(key)) {
-			for (var i = 0; i < data[key].length; i++) {
-				if (data[key][i]) {
-					data[key][i].addEventListener('blur', check);
-					data[key][i].addEventListener('focus', rezet);
-				}
-				
-			}
+	if (reg) {
+		for (var i = 0; i < reg.length; i++) {
+			reg[i].addEventListener('blur', check);
+			reg[i].addEventListener('focus', rezet);
 		}
 	}
 
 	function rezet(event) {
+		this.classList.remove('invalid');
 		var error = this.nextElementSibling;
 		error.innerHTML = '';
 		error.classList.remove('error');
-		this.classList.remove('invalid');
 	}
 
 	function check(event) {
 		var error = this.nextElementSibling;
 
 		if (!this.validity.valid) {
+			this.classList.add('invalid');
 			error.classList.add('error');
 			error.innerHTML = 'ошибка / неправильный формат';
-			this.classList.add('invalid');
 		}
 		if (this.validity.valueMissing) {
 			error.innerHTML = 'ошибка / заполните поле';
 		}
 	}
 
+	function validate() {
+		var el = this.querySelectorAll('input[required]');
+		var agree = this.querySelector('input[name="agree"]');
 
-	if (form1) {
-		form1.addEventListener('submit', validate);
-	}
-	if (form2) {
-		form2.addEventListener('submit', validate);
-	}
-	
+		if (!agree || agree.checked) {
 
-	function validate(event) {
-		var nameForm = this.getAttribute('name');
-		var checkBox = document.forms[nameForm]['checkbox'];
-
-		if (checkBox.checked) {
-			var elem = data[nameForm];
-
-			for (var i = 0; i < elem.length; i++) {
-				var input = elem[i];
+			for (var i = 0; i < el.length; i++) {
+				var input = el[i];
 				var error = input.nextElementSibling;
 
 				if (!input.validity.valid) {
-					error.classList.add('error');
-					error.innerHTML = 'ошибка / неправильный формат';
-					input.classList.add('invalid');
 					event.preventDefault();
+					input.classList.add('invalid');
+					error.innerHTML = 'ошибка / неправильный формат';
 				}
 				if (input.validity.valueMissing) {
 					error.innerHTML = 'ошибка / заполните поле';
@@ -534,8 +500,14 @@ function valid() {
 			event.preventDefault();
 		}
 	}
-}
-valid();
+
+	if (form1) {
+		form1.addEventListener('submit', validate);
+	}
+	if (form2) {
+		form2.addEventListener('submit', validate);
+	}
+}());
 
 
 /* ==== googleMap со стоковым infowindow  ===== */
