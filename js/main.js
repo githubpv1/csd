@@ -1,39 +1,39 @@
 objectFitImages(); //IE polyfill
 
 
-//сбрасываем :focus при клике для a и button, но оставляем с клавиатуры
+//сбрасываем :focus
 
-function focusLose() {
+(function () {
+	var button = document.querySelectorAll('a, button, label, input');
+
 	var isMouseDown = false;
-	var button = document.querySelectorAll('a, button');
-	var isDialog = document.querySelector('[role="dialog"]');
-
-	function func() {
-		if (isMouseDown) {
-			this.blur();
-		}
-	}
 
 	for (var i = 0; i < button.length; i++) {
 		var el = button[i];
+
+		if (el.tagName !== 'LABEL') {
+			el.classList.add('focus');
+		}
+
 		el.addEventListener('mousedown', function () {
+			this.classList.remove('focus');
 			isMouseDown = true;
-			if (isDialog) {
-				isKeyClick = false;
+		});
+		el.addEventListener('keydown', function (e) {
+			if (e.key === "Tab") {
+				isMouseDown = false;
 			}
 		});
-		el.addEventListener('mouseup', function () {
-			isMouseDown = false;
+		el.addEventListener('focus', function () {
+			if (isMouseDown) {
+				this.classList.remove('focus');
+			}
 		});
-		if (isDialog) {
-			el.addEventListener('keydown', function () {
-				isKeyClick = true;
-			});
-		}
-		el.addEventListener('focus', func.bind(el));
+		el.addEventListener('blur', function () {
+			this.classList.add('focus');
+		});
 	}
-}
-focusLose();
+}());
 
 
 
@@ -43,8 +43,17 @@ function scrollMenu(nav, offset, speed, easing) {
 
 	var menu = document.querySelector(nav);
 	var menuHeight;
-	if (offset) { //если есть значение селектора
+	if (offset) { 
 		var head = document.querySelector(offset);
+
+		if (head) { 
+			menuHeight = head.clientHeight;
+      // отступ под меню
+      // document.body.style.paddingTop = menuHeight + 'px';
+
+		} else {
+			menuHeight = 0;
+		}
 	} else {
 		menuHeight = 0;
 	}
@@ -56,7 +65,6 @@ function scrollMenu(nav, offset, speed, easing) {
 	window.requestAnimFrame = function () {
 		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || fncAnimation;
 	}();
-
 
 
 	function scrollToY(height, speed, easing) {
@@ -101,7 +109,6 @@ function scrollMenu(nav, offset, speed, easing) {
 		tick();
 	};
 
-
 	function menuControl(menu) {
 		var i = void 0;
 		var currLink = void 0;
@@ -112,6 +119,7 @@ function scrollMenu(nav, offset, speed, easing) {
 		for (i = 0; i < links.length; i += 1) {
 			currLink = links[i];
 			refElement = document.querySelector(currLink.getAttribute('href'));
+
 			if (refElement) {
 				var box = refElement.getBoundingClientRect();
 
@@ -124,7 +132,7 @@ function scrollMenu(nav, offset, speed, easing) {
 				}
 			}
 		}
-	};
+	}
 
 	function animated(menu, speed, easing) {
 
@@ -151,13 +159,13 @@ function scrollMenu(nav, offset, speed, easing) {
 			link = links[i];
 			link.addEventListener('click', control);
 		}
-	};
+	}
 
 	animated(menu, speed, easing);
 	document.addEventListener('scroll', function () {
 		menuControl(menu);
 	});
-};
+}
 
 scrollMenu('.nav__list', '.head__top', 10000);
 
@@ -174,18 +182,22 @@ function nav() {
 	document.querySelector('.nav__burger').onclick = function () {
 		nav.classList.add('active');
 		navList.classList.add('active');
-		navClose.classList.add('active');
-		socials.classList.add('active');
 		lock.classList.add('lock');
+		navClose.classList.add('active');
+		if (socials) {
+			socials.classList.add('active');
+		}
 	}
 
 	function close() {
-		navClose.classList.remove('active');
 		nav.classList.remove('active');
 		navList.classList.remove('active');
-		socials.classList.remove('active');
 		lock.classList.remove('lock');
+		navClose.classList.remove('active');
 		regionList.style.display = "none";
+		if (socials) {
+			socials.classList.remove('active');
+		}
 	}
 
 	navClose.addEventListener('click', close);
@@ -444,11 +456,21 @@ function maskInput() {
 maskInput();
 
 
-// ====== validate form ========
+
+// ====== validate and sendform ========
 
 (function () {
-	var reg = document.querySelectorAll('input[required]');
+	var form = document.querySelectorAll('form');
 
+	if (form) {
+		for (let i = 0; i < form.length; i++) {
+			// form[i].addEventListener('submit', validate);
+			form[i].addEventListener('submit', ajaxSend);
+		}
+	}
+
+
+	var reg = document.querySelectorAll('input[required]');
 
 	if (reg) {
 		for (var i = 0; i < reg.length; i++) {
@@ -457,57 +479,100 @@ maskInput();
 		}
 	}
 
-	function rezet(event) {
+
+	function rezet() {
+		var error = this.parentElement.querySelector('.error');
 		this.classList.remove('invalid');
-		var error = this.nextElementSibling;
-		error.innerHTML = '';
-		error.classList.remove('error');
+		error.classList.remove('active');
+		error.addEventListener('transitionend', function () {
+			if (!this.classList.contains('active')) {
+				this.innerHTML = '';
+			}
+		});
 	}
 
-	function check(event) {
-		var error = this.nextElementSibling;
+	function check() {
+		var error = this.parentElement.querySelector('.error');
 
 		if (!this.validity.valid) {
 			this.classList.add('invalid');
-			error.classList.add('error');
+			error.classList.add('active');
 			error.innerHTML = 'ошибка / неправильный формат';
-		}
-		if (this.validity.valueMissing) {
-			error.innerHTML = 'ошибка / заполните поле';
+			if (this.validity.valueMissing || this.value === '') {
+				error.classList.add('active');
+				error.innerHTML = 'ошибка / заполните поле';
+			}
+			return 1;
+		} else {
+			return 0;
 		}
 	}
 
-	function validate() {
-		var el = this.querySelectorAll('input[required]');
-		var agree = this.querySelector('input[name="agree"]');
 
+	function validate(e) {
+		var test = this.hasAttribute('data-test');
+		messageBox = this.getAttribute('data-message');
+		var rating = this.querySelector('.rating');
+		var reg = this.querySelectorAll('input[required]');
+		var agree = this.querySelector('input[name="agree"]');
+		var countError = 0;
 		if (!agree || agree.checked) {
 
-			for (var i = 0; i < el.length; i++) {
-				var input = el[i];
-				var error = input.nextElementSibling;
+			if (rating) {
+				countError += checkRating();
+			}
 
-				if (!input.validity.valid) {
-					event.preventDefault();
-					input.classList.add('invalid');
-					error.innerHTML = 'ошибка / неправильный формат';
-				}
-				if (input.validity.valueMissing) {
-					error.innerHTML = 'ошибка / заполните поле';
+			for (var i = 0; i < reg.length; i++) {
+				var input = reg[i];
+				countError += check.call(input);
+				if (countError) {
+					e.preventDefault();
 				}
 			}
 		} else {
-			event.preventDefault();
+			e.preventDefault();
+			countError++;
+		}
+		if (test && countError === 0) {
+			e.preventDefault();
+			countError++;
+			this.reset();
+			setDate('test');
+		}
+		return countError;
+	}
+
+
+	function ajaxSend(e) {
+		e.preventDefault();
+		var el = this;
+		var error = validate.call(el, e);
+
+		if (error === 0) {
+			this.classList.add('sending');
+			var formData = new FormData(this);
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", this.getAttribute("action"));
+			// xhr.responseType = 'json';
+			xhr.send(formData);
+
+			xhr.onloadend = function () {
+				if (xhr.status == 200) {
+					el.classList.remove('sending');
+					el.reset();
+					// alert('Сообщение отправлено.');
+					// alert(xhr.response);  //ответ сервера
+					// setDate.call(el, xhr.response);
+				} else {
+					console.log('Ошибка' + this.status);
+				}
+			}
 		}
 	}
 
-	if (form1) {
-		form1.addEventListener('submit', validate);
-	}
-	if (form2) {
-		form2.addEventListener('submit', validate);
-	}
 }());
+
+
 
 
 /* ==== googleMap со стоковым infowindow  ===== */

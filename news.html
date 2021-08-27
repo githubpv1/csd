@@ -7,19 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<title>CSD</title>
+	<title>news</title>
 	<link rel="stylesheet" href="css/custom-bootstrap.css">
-	<!-- <link rel="stylesheet" href="css/swiper.css"> -->
-	<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"> -->
-	<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" href="css/swiper.css">
 
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
-	<!--[if lt IE 9]>
-	<p class="browsehappy container">Вы используете <strong>устаревший</strong> браузер. Пожалуйста, <a href="http://browsehappy.com/">обновите версию вашего браузера</a> для более
-	продуктивной и комфортной работы.</p>  <![endif]-->
+
 
 	<!-- svg inline -->
 	<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
@@ -621,51 +617,68 @@
 
 	<!-- modal -->
 
-	<div role="dialog" id="dialog-form" aria-labelledby="dialog_label" aria-modal="true" class="hidden modal">
+	<div class="dialog-backdrop " onclick="clickBtnClose(this)">
+		<div role="dialog" id="dialog-form" aria-labelledby="dialog_label" aria-modal="true" class="hidden modal">
 
-		<div class="modal__content">
-			<div class="modal__logo">
-				<div class="modal-logo__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
-			</div>
-			<div class="modal__form">
-				<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
-					<svg class="icon modal__icon_cancel">
+			<div class="modal__content">
+				<div class="modal__logo">
+					<div class="modal-logo__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
+				</div>
+				<div class="modal__form">
+					<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
+						<svg class="icon modal__icon_cancel">
 						<use xlink:href="#icon-close"></use>
 					</svg>
-				</button>
+					</button>
 
-				<div class="modal__title">Заказать звонок</div>
-				<div class="modal-form__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
+					<div class="modal__title">Заказать звонок</div>
+					<div class="modal-form__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
 
-				<form name="Form1" id="form1" action="#" method="POST" enctype="multipart/form-data" novalidate>
+					<form name="Form1" id="form1" action="#" method="POST" enctype="multipart/form-data" novalidate>
 
-					<div class="form__item">
-						<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name"
-							value="" required />
-						<p class="text_error" aria-live="polite"> </p>
-					</div>
-					<div class="form__item">
-						<input type="tel" class="contacts_tel" maxlength="19" name="phone" placeholder="Телефон" id="tel" value=""
-							required />
-						<p class="text_error" aria-live="polite"> </p>
-					</div>
-					<div class="form__item">
-						<input type="tel" class="contacts_email" maxlength="35" name="email" placeholder="Эл. почта" id="email"
-							required />
-						<p class="text_error" aria-live="polite"> </p>
-					</div>
-					<div class="form__item">
-						<button class="form__submit  btn btn_green" type="submit" value="">отправить</button>
-					</div>
-					<input id="check1" type="checkbox" class="checkbox" name="checkbox" value="" checked>
-					<label class="label" for="check1">Я даю согласие на обработку своих
-						персональных данных</label>
-				</form>
+						<div class="form__item">
+							<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name"
+								value="" required />
+							<p class="error" aria-live="polite"> </p>
+						</div>
+						<div class="form__item">
+							<input type="tel" class="contacts_tel" maxlength="19" name="phone" placeholder="Телефон" id="tel" value=""
+								required />
+							<p class="error" aria-live="polite"> </p>
+						</div>
+						<div class="form__item">
+							<input type="tel" class="contacts_email" maxlength="35" name="email" placeholder="Эл. почта" id="email"
+								required />
+							<p class="error" aria-live="polite"> </p>
+						</div>
+						<div class="form__item">
+							<button class="form__submit  btn btn_green" type="submit" value="">отправить</button>
+						</div>
+						<input id="check1" type="checkbox" class="checkbox" name="agree" value="" checked>
+						<label class="label" for="check1">Я даю согласие на обработку своих
+							персональных данных</label>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<script></script>
+	<div class="dialog-backdrop " onclick="clickBtnClose(this)">
+		<div role="dialog" id="dialog-search" aria-labelledby="dialog_label" aria-modal="true" class="hidden">
+			<div class="modal__content">
+
+				<div class=""><img src="img/search.png" alt=""></div>
+				<div class="modal_close">
+					<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
+						<svg class="icon modal__icon_cancel">
+						<use xlink:href="#icon-close"></use>
+					</svg>
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
@@ -674,10 +687,8 @@
 
 	<script src="js/ofi.min.js"></script>
 	<script src="js/swiper.min.js"></script>
-	<!-- <script src="https://unpkg.com/swiper/swiper-bundle.js"></script> -->
-	<!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
-	<script src="js/utils.min.js"></script>
-	<script src="js/dialog.min.js"></script>
+	<script src="js/utils.js"></script>
+	<script src="js/dialog.js"></script>
 	<script src="js/inputmask.min.js"></script>
 
 	<script src="js/main.js"></script>

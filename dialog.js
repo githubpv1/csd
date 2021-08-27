@@ -7,22 +7,23 @@ var aria = aria || {};
 
 aria.Utils = aria.Utils || {};
 
+var isKeyClick = true ;
+
 (function () {
   /*
-   * When util functions move focus around, set this true so the focus listener
-   * can ignore the events.
+   * 
    */
   aria.Utils.IgnoreUtilFocusChanges = false;
 
   aria.Utils.dialogOpenClass = 'has-dialog';
 
   /**
-   * @desc Set focus on descendant nodes until the first focusable element is
-   *       found.
+   * @desc 
+   *       Установите фокус на дочерние узлы, пока не будет найден первый элемент, на который   можно сфокусироваться.
    * @param element
-   *          DOM node for which to find the first focusable descendant.
+   *     Узел DOM, для которого нужно найти первого целевого потомка.
    * @returns
-   *  true if a focusable element is found and focus is set.
+   *  Значение true, если фокусируемый элемент найден и фокус установлен.
    */
   aria.Utils.focusFirstDescendant = function (element) {
     for (var i = 0; i < element.childNodes.length; i++) {
@@ -41,6 +42,11 @@ aria.Utils = aria.Utils || {};
    *          DOM node for which to find the last focusable descendant.
    * @returns
    *  true if a focusable element is found and focus is set.
+   * Найдите последний дочерний узел, на котором можно сфокусироваться.
+    * элемент @param
+    * Узел DOM, для которого нужно найти последнего целевого потомка.
+    * @returns
+    * true, если фокусируемый элемент найден и фокус установлен.
    */
   aria.Utils.focusLastDescendant = function (element) {
     for (var i = element.childNodes.length - 1; i >= 0; i--) {
@@ -54,11 +60,11 @@ aria.Utils = aria.Utils || {};
   }; // end focusLastDescendant
 
   /**
-   * @desc Set Attempt to set focus on the current node.
+   * @desc Установить Попытку установить фокус на текущий узел.
    * @param element
-   *          The node to attempt to focus on.
+   * Узел, на котором нужно сосредоточиться.
    * @returns
-   *  true if element is focused.
+   *  true если элемент сфокусирован.
    */
   aria.Utils.attemptFocus = function (element) {
     if (!aria.Utils.isFocusable(element)) {
@@ -67,7 +73,9 @@ aria.Utils = aria.Utils || {};
 
     aria.Utils.IgnoreUtilFocusChanges = true;
     try {
-      element.focus();
+      if (isKeyClick) {
+        element.focus();
+      }
     }
     catch (e) {
     }
@@ -75,7 +83,7 @@ aria.Utils = aria.Utils || {};
     return (document.activeElement === element);
   }; // end attemptFocus
 
-  /* Modals can open modals. Keep track of them with this array. */
+  /* Модальные окна могут открывать модальные окна. Следите за ними с помощью этого массива. */
   aria.OpenDialogList = aria.OpenDialogList || new Array(0);
 
   /**
@@ -109,20 +117,15 @@ aria.Utils = aria.Utils || {};
 
   /**
    * @constructor
-   * @desc Dialog object providing modal focus management.
-   *
-   * Assumptions: The element serving as the dialog container is present in the
-   * DOM and hidden. The dialog container has role='dialog'.
+   * @desc Объект диалога, обеспечивающий модальное управление фокусом.
+   * Предположения: элемент, служащий контейнером диалога, присутствует в DOM и скрыт. Контейнер диалога имеет role = 'dialog'.
    *
    * @param dialogId
-   *          The ID of the element serving as the dialog container.
+   *          Идентификатор элемента, служащего контейнером диалога.
    * @param focusAfterClosed
-   *          Either the DOM node or the ID of the DOM node to focus when the
-   *          dialog closes.
+   * Либо узел DOM, либо идентификатор узла DOM, на который нужно сфокусироваться при закрытии диалога.
    * @param focusFirst
-   *          Optional parameter containing either the DOM node or the ID of the
-   *          DOM node to focus when the dialog opens. If not specified, the
-   *          first focusable element in the dialog will receive focus.
+   * Необязательный параметр, содержащий либо узел DOM, либо идентификатор узла DOM, на который нужно сфокусироваться при открытии диалогового окна. Если не указано, фокус получит первый фокусируемый элемент в диалоговом окне.
    */
   aria.Dialog = function (dialogId, focusAfterClosed, focusFirst) {
     this.dialogNode = document.getElementById(dialogId);
@@ -147,6 +150,9 @@ aria.Utils = aria.Utils || {};
     // Wrap in an individual backdrop element if one doesn't exist
     // Native <dialog> elements use the ::backdrop pseudo-element, which
     // works similarly.
+    // Оберните отдельный элемент фона, если он не существует
+    // Собственные элементы <dialog> используют псевдоэлемент :: backdrop, который
+    // работает аналогично.
     var backdropClass = 'dialog-backdrop';
     if (this.dialogNode.parentNode.classList.contains(backdropClass)) {
       this.backdropNode = this.dialogNode.parentNode;
@@ -183,9 +189,7 @@ aria.Utils = aria.Utils || {};
       this.focusFirst = null;
     }
 
-    // Bracket the dialog node with two invisible, focusable nodes.
-    // While this dialog is open, we use these to make sure that focus never
-    // leaves the document even if dialogNode is the first or last node.
+    // Закрепите диалоговый узел двумя невидимыми фокусируемыми узлами. Пока этот диалог открыт, мы используем их, чтобы убедиться, что фокус никогда не покидает документ, даже если dialogNode является первым или последним узлом.
     var preDiv = document.createElement('div');
     this.preNode = this.dialogNode.parentNode.insertBefore(preDiv,
       this.dialogNode);
@@ -195,8 +199,7 @@ aria.Utils = aria.Utils || {};
       this.dialogNode.nextSibling);
     this.postNode.tabIndex = 0;
 
-    // If this modal is opening on top of one that is already open,
-    // get rid of the document focus listener of the open dialog.
+    // Если это модальное окно открывается поверх уже открытого, избавьтесь от прослушивателя фокуса документа открытого диалогового окна.
     if (aria.OpenDialogList.length > 0) {
       aria.getCurrentDialog().removeListeners();
     }
@@ -206,7 +209,7 @@ aria.Utils = aria.Utils || {};
     this.clearDialog();
     this.dialogNode.className = 'default_dialog'; // make visible
 
-    if (this.focusFirst) {
+    if (isKeyClick && this.focusFirst) {
       this.focusFirst.focus();
     }
     else {
@@ -227,10 +230,8 @@ aria.Utils = aria.Utils || {};
 
   /**
    * @desc
-   *  Hides the current top dialog,
-   *  removes listeners of the top dialog,
-   *  restore listeners of a parent dialog if one was open under the one that just closed,
-   *  and sets focus on the element specified for focusAfterClosed.
+   * Скрывает текущий верхний диалог, удаляет слушателей верхнего диалога,
+восстанавливает слушателей родительского диалога, если он был открыт под тем, который только что закрылся, и устанавливает фокус на элемент, указанный для focusAfterClosed.
    */
   aria.Dialog.prototype.close = function () {
     aria.OpenDialogList.pop();
@@ -239,7 +240,9 @@ aria.Utils = aria.Utils || {};
     aria.Utils.remove(this.postNode);
     this.dialogNode.className = 'hidden';
     this.backdropNode.classList.remove('active');
-    this.focusAfterClosed.focus();
+    if (isKeyClick) {
+      this.focusAfterClosed.focus();
+		}
 
     // If a dialog was open underneath this one, restore its listeners.
     if (aria.OpenDialogList.length > 0) {
@@ -252,16 +255,13 @@ aria.Utils = aria.Utils || {};
 
   /**
    * @desc
-   *  Hides the current dialog and replaces it with another.
-   *
+   *Скрывает текущий диалог и заменяет его другим.
    * @param newDialogId
-   *  ID of the dialog that will replace the currently open top dialog.
+   *  ID диалога, который заменит текущий открытый верхний диалог.
    * @param newFocusAfterClosed
-   *  Optional ID or DOM node specifying where to place focus when the new dialog closes.
-   *  If not specified, focus will be placed on the element specified by the dialog being replaced.
+   * Необязательный идентификатор или узел DOM, указывающий, где разместить фокус при закрытии нового диалогового окна. Если не указан, фокус будет помещен на элемент, указанный в заменяемом диалоговом окне.
    * @param newFocusFirst
-   *  Optional ID or DOM node specifying where to place focus in the new dialog when it opens.
-   *  If not specified, the first focusable element will receive focus.
+   *  Необязательный идентификатор или узел DOM, указывающий, где разместить фокус в новом диалоговом окне при его открытии. Если не указано, фокус получит первый фокусируемый элемент.
    */
   aria.Dialog.prototype.replace = function (newDialogId, newFocusAfterClosed,
     newFocusFirst) {
@@ -319,13 +319,7 @@ aria.Utils = aria.Utils || {};
     if (topDialog.dialogNode.contains(document.activeElement)) {
       topDialog.replace(newDialogId, newFocusAfterClosed, newFocusFirst);
     }
-  }; // end replaceDialog
+  }; // end replaceDialog  replace - заменить
 
-    // ===== close modal click backdrop =====
-
-    window.clickBtnClose = function (el) {
-      if (el == event.target) {
-      aria.getCurrentDialog().close();
-      }
-    };
 }());
+

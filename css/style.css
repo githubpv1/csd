@@ -105,6 +105,7 @@ ul li {
 img {
   vertical-align: top;
   max-width: 100%;
+  height: auto;
 }
 
 input,
@@ -120,14 +121,13 @@ button {
   color: inherit;
 }
 
-button:focus,
-a:focus {
-  box-shadow: 0 0 0 3px lightskyblue;
-}
-
-input:focus {
-  box-shadow: 0 0 0 3px #f2f5f8;
-  background-color: #ffffff;
+button:focus.focus,
+a:focus.focus,
+/* input[type="radio"]:focus.focus +label:before,*/
+input[type="radio"]:focus.focus+label,
+input[type="checkbox"]:focus.focus+label,
+input[type="file"]:focus.focus+label {
+	box-shadow: white 0 0 0 2px, lightskyblue 0 0 0 5px;
 }
 
 html {

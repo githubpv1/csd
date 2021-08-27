@@ -84,6 +84,31 @@ function vanillaScrollspy(nav, offset, speed, easing) {
     }
   };
 
+  function menuControl(menu) {
+    var i = void 0;
+    var currLink = void 0;
+    var refElement = void 0;
+    var links = menu.querySelectorAll('a[href^="#"]');
+    var scrollY = window.pageYOffset;
+
+
+    for (i = 0; i < links.length; i += 1) {
+      currLink = links[i];
+      refElement = document.querySelector(currLink.getAttribute('href'));
+
+      if (refElement) {
+        var box = refElement.getBoundingClientRect();
+        var topElem = box.top + scrollY - menuHeight;
+
+        if (topElem <= scrollY && topElem + refElement.clientHeight > scrollY) {
+          currLink.classList.add('active');
+        } else {
+          currLink.classList.remove('active');
+        }
+      }
+    }
+  };
+
   function animated(menu, speed, easing) {
     function control(e) {
       e.preventDefault();
