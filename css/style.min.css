@@ -3574,6 +3574,10 @@ input:focus::placeholder {
   }
 }
 
+.team__slide img {
+  width: 100%;
+}
+
 @media (min-width: 1200px) {
   .team__wrap_swiper {
     display: flex;
