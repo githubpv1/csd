@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 
 <head>
@@ -6,15 +6,24 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<title>article</title>
-	<link rel="stylesheet" href="css/custom-bootstrap.css">
-	<link rel="stylesheet" href="css/swiper.css">
+	<meta name="description" content="сайт компании ">
+	<title>Каталог</title>
+	<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/style.css">
+
+	<!-- favicons -->
+	<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+	<link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="stylesheet" href="css/style.min.css">
 
 </head>
+
 <body>
+
+<div class="wrapper">
 
 	<!-- svg inline -->
 	<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
@@ -294,493 +303,496 @@
 
 
 	<header class="head">
-	  <div class="head__top">
-	    <div class="container">
-	      <div class="head__nav">
-	        <div class="logo">
-	          <img class="logo__img" src="img/logo.png" alt="логотип">
-	          <a class="logo__link" href="index.html" title="на главную"></a>
-	        </div>
-
-	        <button class="nav__burger">
-	          <svg class="icon icon_menu" aria-hidden="true">
-	            <use xlink:href="#icon-menu"></use>
-	          </svg>
-	        </button>
-	        <nav class="navi">
-	          <ul class="nav__list">
-	            <li><a href="#servic">Услуги</a></li>
-	            <li><a href="#we">О нас</a></li>
-	            <li><a href="#reviews">Отзывы</a></li>
-	            <li><a href="#news">Новости</a></li>
-	            <li><a href="#contacts">Контакты</a></li>
-	          </ul>
-
-	          <div class="head__city">
-	            <svg class="icon icon_map" aria-hidden="true">
-	              <use xlink:href="#icon-map"></use>
-	            </svg>
-	            <div class="">
-	              <span class="head-city__text">Ваш город:</span>
-	              <button class="head-city__desc" data-show>г.
-	                <span data-city>Мурманск</span>
-	                <svg class="icon city__drop_down" aria-hidden="true">
-	                  <use xlink:href="#icon-drop_down"></use>
-	                </svg>
-	              </button>
-	            </div>
-	          </div>
-	          <a class="head__link_phone hover_blue" data-link href="tel:+7 (953) 302 50 94">
-	            <svg class="icon_phone icon" aria-hidden="true">
-	              <use xlink:href="#icon-phone"></use>
-	            </svg>
-	            <span data-tel_text>+7 (953) 302 50 94</span>
-	          </a>
-	          <button class="nav__close" aria-label="close">
-	            <div class="div__close"></div>
-	            <svg class="icon_close icon">
-	              <use xlink:href="#icon-close"></use>
-	            </svg>
-	          </button>
-	        </nav>
-	      </div>
-	    </div>
-
-	    <div class="head__region">
-	      <div class="region__container container">
-
-	        <div class="region__content" style="display: none;">
-	          <span class="region-content__text">Ваш регион - <span class="region-content__city">г.Мурманск</span>?</span>
-	          <button class="region__btn" data-yes>Да</button>
-	          <button class="region__btn" data-change>Изменить регион</button>
-	        </div>
-
-	        <div class="region__list" style="display: none;">
-	          <div class="region__title">Выберите свой город:</div>
-
-	          <input type="radio" name="region" class="radio" value="Москва" id="city" data-tel="+7 (499) 302 50 94">
-	          <label for="city">Москва</label>
-
-	          <input type="radio" name="region" class="radio" value="Мурманск" id="city1" data-tel="+7 (953) 302 50 94">
-	          <label for="city1"> Мурманск</label>
-
-	          <input type="radio" name="region" class="radio" value="Санкт-Петербург" id="city2"
-	            data-tel="+7 (812) 302 50 94">
-	          <label for="city2"> Санкт-Петербург</label>
-
-	          <button class="region__btn" data-save>Сохранить</button>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</header>
-
-	<main role="main">
-	  <article class="art">
-	  	<div class="art-top">
-	  		<div class="art-top__wrap">
-	  			<div class="art-top__container container">
-	  				<div class="art-top__wrap_img ">
-	  					<img class="art-top__img" src="img/text/head.jpg" alt="">
-	  				</div>
-	  				<div class="art-top__nav">
-	  					<ul class="breadcrumb">
-	  						<li>
-	  							<a href="/" aria-label="на главную">
-	  								<svg class="breadcrumb__icon icon">
-	  									<use xlink:href="#icon-home"></use>
-	  								</svg>
-	  							</a>
-	  						</li>
-	  						<li>
-	  							<a href="news.html">Новости</a>
-	  						</li>
-	  						<li>
-	  							название статьи
-	  						</li>
-	  					</ul>
-
-	  					<h2 class="art__title_2">Не следует, однако забывать, что консультация с широким активом представляет
-	  						собой
-	  					</h2>
-	  				</div>
-	  			</div>
-	  		</div>
-	  	</div>
-
-	  	<div class="container">
-	  		<div class="row">
-
-	  			<div class="art__col col-12">
-	  				<p class="art__text_blue">Идейные соображения высшего порядка, а также сложившаяся структура организации
-	  					требуют определения и уточнения направлений <span class="d-none d-md-inline">
-	  						прогрессивного развития. Таким образом сложившаяся структура организации способствует подготовки и
-	  						реализации направлений
-	  						прогрессивного развития.</span></p>
-					</div>
-					
-	  			<div class="art__col offset col-xl-10">
-	  				<p class="art__text ">Равным образом укрепление и развитие структуры в значительной степени
-	  					обуславливает
-	  					создание соответствующий условий активизации. Разнообразный и богатый опыт укрепление и развитие
-	  					структуры
-	  					позволяет оценить значение соответствующий условий активизации. Повседневная практика показывает, что
-	  					начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки
-	  					форм
-	  					развития. </p>
-	  				<p> Повседневная практика показывает, что рамки и место обучения кадров требуют от нас
-	  					анализа новых предложений. Таким образом постоянный количественный рост и сфера нашей активности в
-	  					значительной степени обуславливает создание существенных финансовых и административных условий.
-	  					<span class="d-none d-md-inline"> Равным образом консультация с широким активом влечет за собой процесс
-	  						внедрения и модернизации соответствующий
-	  						условий активизации. </span></p>
-	  			</div>
-
-	  			<div class="art__col art__col_quote  col-12">
-	  				<div class="art__quote ">
-	  					<svg class="art-quote__icon icon" aria-hidden="true">
-	  						<use xlink:href="#icon-quote"></use>
-	  					</svg>
-	  					<p class="art-quote__text">Разнообразный и богатый опыт укрепление и развитие структуры позволяет оценить
-	  						значение.</p>
-	  					<div class="art-quote__name">— Имя Фамилия автора цитаты</div>
-	  				</div>
-	  			</div>
-
-	  			<div class="art__col col-10 offset">
-	  				<h3 class="title_3">Бесплатно для наших клиентов</h3>
-	  			</div>
-
-	  			<div class="art__col col-10 offset">
-	  				<ul class="art__list ">
-	  					<li>
-	  						<svg class="icon" aria-hidden="true">
-	  							<use xlink:href="#icon-arrow"></use>
-	  						</svg>
-	  						<div>С другой стороны постоянный количественный рост</div>
-	  					</li>
-	  					<li>
-	  						<svg class="icon" aria-hidden="true">
-	  							<use xlink:href="#icon-arrow"></use>
-	  						</svg>
-	  						<div>Задача организации, в особенности
-	  							же реализация намеченных плановых
-	  							заданий <span class="d-none d-md-inline">требуют от нас анализа системы обучения кадров,
-	  								соответствует насущным</span> </div>
-	  					</li>
-	  					<li>
-	  						<svg class="icon" aria-hidden="true">
-	  							<use xlink:href="#icon-arrow"></use>
-	  						</svg>
-	  						<div>Не следует, однако забывать, что
-	  							начало повседневной работы по
-	  							формированию <span class="d-none d-md-inline">позиции способствует подготовки и реализации системы
-	  								обучения кадров,
-	  								соответствует насущным потребностям.</span> </div>
-	  					</li>
-	  				</ul>
-	  			</div>
-
-	  			<div class="art__col col-xl-6">
-	  				<img class="art__img" src="img/text/free.jpg" alt="">
-	  				<div class="art-quote__name">Название и автор фотографии, год</div>
-	  			</div>
-
-	  			<div class="art__col_table col-xl-6">
-	  				<table>
-	  					<thead>
-	  						<tr>
-	  							<th scope="col">Название</th>
-	  							<th scope="col">Цена</th>
-	  							<th scope="col">Дата</th>
-	  						</tr>
-	  					</thead>
-	  					<tbody>
-	  						<tr>
-	  							<td>Ваш шедевр готов</td>
-	  							<td>$1456</td>
-	  							<td>28 ноября 2019</td>
-	  						</tr>
-	  						<tr>
-	  							<td>Идейные соображения высшего
-	  								порядка</td>
-	  							<td>$1456</td>
-	  							<td>28 ноября 2019</td>
-	  						</tr>
-	  						<tr>
-	  							<td>Ваш шедевр готов</td>
-	  							<td>$1456</td>
-	  							<td>28 ноября 2019</td>
-	  						</tr>
-	  						<tr>
-	  							<td>Идейные соображения высшего
-	  								порядка</td>
-	  							<td>$1456</td>
-	  							<td>28 ноября 2019</td>
-	  						</tr>
-	  						<tr>
-	  							<td>Идейные соображения высшего
-	  								порядка</td>
-	  							<td>$1456</td>
-	  							<td>28 ноября 2019</td>
-	  						</tr>
-	  					</tbody>
-	  				</table>
-	  			</div>
-
-	  			<div class="art__col col-xl-10 offset">
-	  				<p>Равным образом укрепление и развитие структуры в значительной степени обуславливает
-	  					создание соответствующий условий активизации. Разнообразный и богатый опыт укрепление и развитие
-	  					структуры позволяет оценить значение соответствующий условий активизации.
-	  					<span class="d-none d-md-inline"> Повседневная практика показывает, что начало повседневной работы по
-	  						формированию позиции представляет собой интересный эксперимент проверки форм развития.</span></p>
-	  			</div>
-
-	  			<div class="art__col art__col_quote  col-12">
-						<div class="art__quote ">
-							<p class="art-quote__text">Разнообразный и богатый опыт укрепление и развитие структуры
-								позволяет оценить значение <span class="d-none d-md-inline"> соответствующий условий активизации.</span>
-							</p>
-						</div>
-	  			</div>
-
-	  			<div class="art__col col-10 offset d-none d-md-inline">
-	  				<h3 class="title_3">Бесплатно для наших клиентов</h3>
-					</div>
-					
-	  			<div class="art__col offset col-10 d-none d-md-inline">
-	  				<p>Повседневная практика показывает, что рамки и место обучения кадров требуют от нас
-	  					анализа новых предложений. Таким образом постоянный количественный рост и сфера нашей активности в
-	  					значительной степени обуславливает создание существенных финансовых и административных условий. Равным
-	  					образом консультация с широким активом влечет за собой процесс внедрения и модернизации соответствующий
-	  					условий активизации.</p>
-					</div>
-					
-	  			<div class="art__col offset col-10">
-	  				<ol class="art__ol">
-	  					<li>С другой стороны постоянный количественный рост</li>
-	  					<li>Задача организации, в особенности же реализация намеченных плановых заданий <span class="d-none d-md-inline">требуют от нас анализа системы обучения кадров, соответствует насущным потребностям.</span></li>
-	  					<li>Не следует, однако забывать, что начало повседневной работы по формированию <span class="d-none d-md-inline"> позиции способствует подготовки и 
-								реализации системы обучения кадров, соответствует насущным потребностям.</span></li>
-	  				</ol>
-					</div>
-					
-	  		</div>
-	  	</div>
-		</article>
-		
-
-		<section class="article__swiper">
+		<div class="head__top">
 			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="art__swiper swiper-container">
+				<div class="head__nav">
+					<div class="logo">
+						<img class="logo__img" src="img/logo.png" alt="логотип">
+						<a class="logo__link" href="index.html" title="на главную"></a>
+					</div>
 
-							<div class="art__arrow_carousel arrow_carousel">
+					<button class="nav__burger">
+						<svg class="icon icon_menu" aria-hidden="true">
+							<use xlink:href="#icon-menu"></use>
+						</svg>
+					</button>
 
-								<button class="art__prev_slide " aria-label="Previous">
-									<svg class="icon_slide icon" aria-hidden="true">
-										<use xlink:href="#icon-arrow"></use>
-									</svg>Предыдущая статья
-								</button>
+					<nav class="navi">
+						<div class="navbar__body">
+							<ul class="nav__list">
+								<li><a href="#servic">Услуги</a></li>
+								<li><a href="#we">О нас</a></li>
+								<li><a href="#reviews">Отзывы</a></li>
+								<li><a href="#news">Новости</a></li>
+								<li><a href="#contacts">Контакты</a></li>
+							</ul>
 
-								<button class="art__next_slide " aria-label="Next">Следующая статья
-									<svg class="icon_slide icon" aria-hidden="true">
-										<use xlink:href="#icon-arrow"></use>
-									</svg>
-								</button>
+							<div class="head__city">
+								<svg class="icon icon_map" aria-hidden="true">
+									<use xlink:href="#icon-map"></use>
+								</svg>
+								<div class="">
+									<span class="head-city__text">Ваш город:</span>
+									<button class="head-city__desc" data-show>г.
+										<span data-city>Мурманск</span>
+										<svg class="icon city__drop_down" aria-hidden="true">
+											<use xlink:href="#icon-drop_down"></use>
+										</svg>
+									</button>
+								</div>
 							</div>
 
-							
+							<a class="head__link_phone hover_blue" data-link href="tel:+7 (953) 302 50 94">
+								<svg class="icon_phone icon" aria-hidden="true">
+									<use xlink:href="#icon-phone"></use>
+								</svg>
+								<span data-tel_text>+7 (953) 302 50 94</span>
+							</a>
 
-							<div class="swiper-wrapper">
-								<div class="art__swiper_slide swiper-slide">1 Равным образом постоянный количественный рост</div>
-								<div class="art__swiper_slide swiper-slide">2 Не следует, однако забывать, что начало повседневной работы по формированию позиции</div>
-								<div class="art__swiper_slide swiper-slide">3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
-								<div class="art__swiper_slide swiper-slide">4 однако забывать, что начало повседневной работы по формированию позиции</div>
-								<div class="art__swiper_slide swiper-slide">5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
-								<div class="art__swiper_slide swiper-slide">6 однако забывать, что начало повседневной работы по формированию позиции</div>
-							</div>
+							<button class="nav__close" aria-label="close">
+								<div class="div__close"></div>
+								<svg class="icon_close icon">
+									<use xlink:href="#icon-close"></use>
+								</svg>
+							</button>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="art-news">
-			<div class="container">
-				<div class="row">
-
-					<div class=" col-12">
-						<div class="text_blue">вас может заинтересовать</div>
-	  				<h3 class="art-news__title title_2">Похожие новости</h3>
-					</div>
-
-						<div class="art-news__swiper swiper-container">
-							<div class="art-news__wrap swiper-wrapper">
-
-								<div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3">
-									<a href="text.html" class="art-news__item ">
-										<div class="art-news__wrap_img ">
-											<img class="img_cover" src="img/bg_news1.jpg" alt="">
-										</div>
-										<div class="news__date">21 мая 2019</div>
-										<div class="news__title">Образом постоянный 
-											количественный рост</div>
-										<div class="news__text">Не следует, однако забывать, что
-											сложившаяся структура организации
-											способствует подготовки и ...</div>
-										<div class="news__more">подробнее
-											<svg class="news__icon icon" aria-hidden="true">
-												<use xlink:href="#icon-arrow"></use>
-											</svg>
-										</div>
-									</a>
-								</div>
-								<div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3">
-									<a href="text.html" class="art-news__item ">
-										<div class="art-news__wrap_img ">
-											<img class="img_cover" src="img/bg_news1.jpg" alt="">
-										</div>
-										<div class="news__date">21 мая 2019</div>
-										<div class="news__title">Образом постоянный 
-											количественный рост</div>
-										<div class="news__text">Не следует, однако забывать, что
-											сложившаяся структура организации
-											способствует подготовки и ...</div>
-										<div class="news__more">подробнее
-											<svg class="news__icon icon" aria-hidden="true">
-												<use xlink:href="#icon-arrow"></use>
-											</svg>
-										</div>
-									</a>
-								</div>
-								<div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3 d-md-none d-xl-block">
-									<a href="text.html" class="art-news__item ">
-										<div class="art-news__wrap_img ">
-											<img class="img_cover" src="img/bg_news1.jpg" alt="">
-										</div>
-										<div class="news__date">21 мая 2019</div>
-										<div class="news__title">Образом постоянный 
-											количественный рост</div>
-										<div class="news__text">Не следует, однако забывать, что
-											сложившаяся структура организации
-											способствует подготовки и ...</div>
-										<div class="news__more">подробнее
-											<svg class="news__icon icon" aria-hidden="true">
-												<use xlink:href="#icon-arrow"></use>
-											</svg>
-										</div>
-									</a>
-								</div>
-								<div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3 d-md-none d-xl-block">
-									<a href="text.html" class="art-news__item ">
-										<div class="art-news__wrap_img ">
-											<img class="img_cover" src="img/bg_news1.jpg" alt="">
-										</div>
-										<div class="news__date">21 мая 2019</div>
-										<div class="news__title">Образом постоянный 
-											количественный рост</div>
-										<div class="news__text">Не следует, однако забывать, что
-											сложившаяся структура организации
-											способствует подготовки и ...</div>
-										<div class="news__more">подробнее
-											<svg class="news__icon icon" aria-hidden="true">
-												<use xlink:href="#icon-arrow"></use>
-											</svg>
-										</div>
-									</a>
-								</div>
-							
-								
-							</div>
-						</div>
-
-					<div class="col-12 art-news__arrow_carousel arrow_carousel">
-						<button class="art-news__prev_slide prev_slide" aria-label="Previous">
-							<svg class="news__icon icon" aria-hidden="true">
-								<use xlink:href="#icon-arrow"></use>
-							</svg>
-						</button>
-						<div class="art-news__swiper_pagination swiper-pagination"></div>
-						<button class="art-news__next_slide next_slide" aria-label="Next">
-							<svg class="news__icon icon" aria-hidden="true">
-								<use xlink:href="#icon-arrow"></use>
-							</svg>
-						</button>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-		
-
-	</main>
-
-
-	<footer class="footer">
-		<div class="container">
-			<div class="footer__row">
-				<div class="footer__wrap_left">
-					<img class="footer__logo" src="img/logo_footer.svg" alt="">
-
-					<div class="footer__text">Межрегиональная общественная организация по защите имущественных прав граждан «Центр
-						реструктуризации и списания долгов»
-					</div>
-				</div>
-				<div class="footer__wrap_right">
-					<button href="#!" class="footer__btn btn btn_green" onclick="openDialog('dialog-form', this)">заказать
-						звонок</button>
-
-					<nav class="footer__nav">
-						<ul class="footer__socials socials">
-							<li>
-								<a aria-label="youtube" target="_blank" href="https://youtube.com/">
-									<svg class="icon">
-										<use xlink:href="#icon-youtube"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a aria-label="facebook" target="_blank" href="https://facebook.com/">
-									<svg class="icon">
-										<use xlink:href="#icon-facebook"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a aria-label="vkontakte" target="_blank" href="https://vk.com/">
-									<svg class="icon">
-										<use xlink:href="#icon-vk"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a aria-label="instagram" target="_blank" href="https://instagram.com/">
-									<svg class="icon">
-										<use xlink:href="#icon-instagram"></use>
-									</svg>
-								</a>
-							</li>
-							<li>
-								<a aria-label="odnoklassniki" target="_blank" href="https://ok.ru/">
-									<svg class="icon">
-										<use xlink:href="#icon-ok"></use>
-									</svg>
-								</a>
-							</li>
-						</ul>
 					</nav>
 				</div>
 			</div>
-			<div class="copirite">© 2015-2019, ООО Центр списания долгов
+
+			<div class="head__region">
+				<div class="region__container container">
+
+					<div class="region__content" style="display: none;">
+						<span class="region-content__text">Ваш регион - <span class="region-content__city">г.Мурманск</span>?</span>
+						<button class="region__btn" data-yes>Да</button>
+						<button class="region__btn" data-change>Изменить регион</button>
+					</div>
+
+					<div class="region__list" style="display: none;">
+						<div class="region__title">Выберите свой город:</div>
+
+						<input type="radio" name="region" class="radio" value="Москва" id="city" data-tel="+7 (499) 302 50 94">
+						<label for="city">Москва</label>
+
+						<input type="radio" name="region" class="radio" value="Мурманск" id="city1" data-tel="+7 (953) 302 50 94">
+						<label for="city1"> Мурманск</label>
+
+						<input type="radio" name="region" class="radio" value="Санкт-Петербург" id="city2"
+							data-tel="+7 (812) 302 50 94">
+						<label for="city2"> Санкт-Петербург</label>
+
+						<button class="region__btn" data-save>Сохранить</button>
+					</div>
+				</div>
 			</div>
-
 		</div>
-	</footer>
 
+	</header>
 
+<main class="main">
+  <article class="art">
+    <div class="art-top">
+      <div class="art-top__wrap">
+        <div class="art-top__container container">
+          <div class="art-top__wrap_img ">
+            <img class="art-top__img" src="img/text/head.jpg" alt="">
+          </div>
+          <div class="art-top__nav">
+            <ul class="breadcrumb">
+              <li>
+                <a href="/" aria-label="на главную">
+                  <svg class="breadcrumb__icon icon">
+                    <use xlink:href="#icon-home"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="news.html">Новости</a>
+              </li>
+              <li>
+                название статьи
+              </li>
+            </ul>
+
+            <h2 class="art__title_2">Не следует, однако забывать, что консультация с широким активом представляет
+              собой
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="art__col col-12">
+          <p class="art__text_blue">Идейные соображения высшего порядка, а также сложившаяся структура организации
+            требуют определения и уточнения направлений <span class="d-none d-md-inline">
+              прогрессивного развития. Таким образом сложившаяся структура организации способствует подготовки и
+              реализации направлений
+              прогрессивного развития.</span></p>
+        </div>
+        
+        <div class="art__col offset col-xl-10">
+          <p class="art__text ">Равным образом укрепление и развитие структуры в значительной степени
+            обуславливает
+            создание соответствующий условий активизации. Разнообразный и богатый опыт укрепление и развитие
+            структуры
+            позволяет оценить значение соответствующий условий активизации. Повседневная практика показывает, что
+            начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки
+            форм
+            развития. </p>
+          <p> Повседневная практика показывает, что рамки и место обучения кадров требуют от нас
+            анализа новых предложений. Таким образом постоянный количественный рост и сфера нашей активности в
+            значительной степени обуславливает создание существенных финансовых и административных условий.
+            <span class="d-none d-md-inline"> Равным образом консультация с широким активом влечет за собой процесс
+              внедрения и модернизации соответствующий
+              условий активизации. </span></p>
+        </div>
+
+        <div class="art__col art__col_quote  col-12">
+          <div class="art__quote ">
+            <svg class="art-quote__icon icon" aria-hidden="true">
+              <use xlink:href="#icon-quote"></use>
+            </svg>
+            <p class="art-quote__text">Разнообразный и богатый опыт укрепление и развитие структуры позволяет оценить
+              значение.</p>
+            <div class="art-quote__name">— Имя Фамилия автора цитаты</div>
+          </div>
+        </div>
+
+        <div class="art__col col-10 offset">
+          <h3 class="title_3">Бесплатно для наших клиентов</h3>
+        </div>
+
+        <div class="art__col col-10 offset">
+          <ul class="art__list ">
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+              <div>С другой стороны постоянный количественный рост</div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+              <div>Задача организации, в особенности
+                же реализация намеченных плановых
+                заданий <span class="d-none d-md-inline">требуют от нас анализа системы обучения кадров,
+                  соответствует насущным</span> </div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-arrow"></use>
+              </svg>
+              <div>Не следует, однако забывать, что
+                начало повседневной работы по
+                формированию <span class="d-none d-md-inline">позиции способствует подготовки и реализации системы
+                  обучения кадров,
+                  соответствует насущным потребностям.</span> </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="art__col col-xl-6">
+          <img class="art__img" src="img/text/free.jpg" alt="">
+          <div class="art-quote__name">Название и автор фотографии, год</div>
+        </div>
+
+        <div class="art__col_table col-xl-6">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Дата</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ваш шедевр готов</td>
+                <td>$1456</td>
+                <td>28 ноября 2019</td>
+              </tr>
+              <tr>
+                <td>Идейные соображения высшего
+                  порядка</td>
+                <td>$1456</td>
+                <td>28 ноября 2019</td>
+              </tr>
+              <tr>
+                <td>Ваш шедевр готов</td>
+                <td>$1456</td>
+                <td>28 ноября 2019</td>
+              </tr>
+              <tr>
+                <td>Идейные соображения высшего
+                  порядка</td>
+                <td>$1456</td>
+                <td>28 ноября 2019</td>
+              </tr>
+              <tr>
+                <td>Идейные соображения высшего
+                  порядка</td>
+                <td>$1456</td>
+                <td>28 ноября 2019</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="art__col col-xl-10 offset">
+          <p>Равным образом укрепление и развитие структуры в значительной степени обуславливает
+            создание соответствующий условий активизации. Разнообразный и богатый опыт укрепление и развитие
+            структуры позволяет оценить значение соответствующий условий активизации.
+            <span class="d-none d-md-inline"> Повседневная практика показывает, что начало повседневной работы по
+              формированию позиции представляет собой интересный эксперимент проверки форм развития.</span></p>
+        </div>
+
+        <div class="art__col art__col_quote  col-12">
+          <div class="art__quote ">
+            <p class="art-quote__text">Разнообразный и богатый опыт укрепление и развитие структуры
+              позволяет оценить значение <span class="d-none d-md-inline"> соответствующий условий активизации.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="art__col col-10 offset d-none d-md-inline">
+          <h3 class="title_3">Бесплатно для наших клиентов</h3>
+        </div>
+        
+        <div class="art__col offset col-10 d-none d-md-inline">
+          <p>Повседневная практика показывает, что рамки и место обучения кадров требуют от нас
+            анализа новых предложений. Таким образом постоянный количественный рост и сфера нашей активности в
+            значительной степени обуславливает создание существенных финансовых и административных условий. Равным
+            образом консультация с широким активом влечет за собой процесс внедрения и модернизации соответствующий
+            условий активизации.</p>
+        </div>
+        
+        <div class="art__col offset col-10">
+          <ol class="art__ol">
+            <li>С другой стороны постоянный количественный рост</li>
+            <li>Задача организации, в особенности же реализация намеченных плановых заданий <span class="d-none d-md-inline">требуют от нас анализа системы обучения кадров, соответствует насущным потребностям.</span></li>
+            <li>Не следует, однако забывать, что начало повседневной работы по формированию <span class="d-none d-md-inline"> позиции способствует подготовки и 
+              реализации системы обучения кадров, соответствует насущным потребностям.</span></li>
+          </ol>
+        </div>
+        
+      </div>
+    </div>
+  </article>
+  
+
+  <section class="article__swiper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="art__swiper swiper-container">
+
+            <div class="art__arrow_carousel arrow_carousel">
+
+              <button class="art__prev_slide " aria-label="Previous">
+                <svg class="icon_slide icon" aria-hidden="true">
+                  <use xlink:href="#icon-arrow"></use>
+                </svg>Предыдущая статья
+              </button>
+
+              <button class="art__next_slide " aria-label="Next">Следующая статья
+                <svg class="icon_slide icon" aria-hidden="true">
+                  <use xlink:href="#icon-arrow"></use>
+                </svg>
+              </button>
+            </div>
+
+            
+
+            <div class="swiper-wrapper">
+              <div class="art__swiper_slide swiper-slide">1 Равным образом постоянный количественный рост</div>
+              <div class="art__swiper_slide swiper-slide">2 Не следует, однако забывать, что начало повседневной работы по формированию позиции</div>
+              <div class="art__swiper_slide swiper-slide">3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
+              <div class="art__swiper_slide swiper-slide">4 однако забывать, что начало повседневной работы по формированию позиции</div>
+              <div class="art__swiper_slide swiper-slide">5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, eum? </div>
+              <div class="art__swiper_slide swiper-slide">6 однако забывать, что начало повседневной работы по формированию позиции</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="art-news">
+    <div class="container">
+      <div class="row">
+
+        <div class=" col-12">
+          <div class="text_blue">вас может заинтересовать</div>
+          <h3 class="art-news__title title_2">Похожие новости</h3>
+        </div>
+
+          <div class="art-news__swiper swiper-container">
+            <div class="art-news__wrap swiper-wrapper">
+
+              <div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3">
+                <a href="text.html" class="art-news__item ">
+                  <div class="art-news__wrap_img ">
+                    <img class="img_cover" src="img/bg_news1.jpg" alt="">
+                  </div>
+                  <div class="news__date">21 мая 2019</div>
+                  <div class="news__title">Образом постоянный 
+                    количественный рост</div>
+                  <div class="news__text">Не следует, однако забывать, что
+                    сложившаяся структура организации
+                    способствует подготовки и ...</div>
+                  <div class="news__more">подробнее
+                    <svg class="news__icon icon" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3">
+                <a href="text.html" class="art-news__item ">
+                  <div class="art-news__wrap_img ">
+                    <img class="img_cover" src="img/bg_news1.jpg" alt="">
+                  </div>
+                  <div class="news__date">21 мая 2019</div>
+                  <div class="news__title">Образом постоянный 
+                    количественный рост</div>
+                  <div class="news__text">Не следует, однако забывать, что
+                    сложившаяся структура организации
+                    способствует подготовки и ...</div>
+                  <div class="news__more">подробнее
+                    <svg class="news__icon icon" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3 d-md-none d-xl-block">
+                <a href="text.html" class="art-news__item ">
+                  <div class="art-news__wrap_img ">
+                    <img class="img_cover" src="img/bg_news1.jpg" alt="">
+                  </div>
+                  <div class="news__date">21 мая 2019</div>
+                  <div class="news__title">Образом постоянный 
+                    количественный рост</div>
+                  <div class="news__text">Не следует, однако забывать, что
+                    сложившаяся структура организации
+                    способствует подготовки и ...</div>
+                  <div class="news__more">подробнее
+                    <svg class="news__icon icon" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <div class="art-news__swiper_slide swiper-slide col-md-6 col-xl-3 d-md-none d-xl-block">
+                <a href="text.html" class="art-news__item ">
+                  <div class="art-news__wrap_img ">
+                    <img class="img_cover" src="img/bg_news1.jpg" alt="">
+                  </div>
+                  <div class="news__date">21 мая 2019</div>
+                  <div class="news__title">Образом постоянный 
+                    количественный рост</div>
+                  <div class="news__text">Не следует, однако забывать, что
+                    сложившаяся структура организации
+                    способствует подготовки и ...</div>
+                  <div class="news__more">подробнее
+                    <svg class="news__icon icon" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            
+              
+            </div>
+          </div>
+
+        <div class="col-12 art-news__arrow_carousel arrow_carousel">
+          <button class="art-news__prev_slide prev_slide" aria-label="Previous">
+            <svg class="news__icon icon" aria-hidden="true">
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+          </button>
+          <div class="art-news__swiper_pagination swiper-pagination"></div>
+          <button class="art-news__next_slide next_slide" aria-label="Next">
+            <svg class="news__icon icon" aria-hidden="true">
+              <use xlink:href="#icon-arrow"></use>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+	<div class="container">
+		<div class="footer__row">
+			<div class="footer__wrap_left">
+				<img class="footer__logo" src="img/logo_footer.svg" alt="">
+
+				<div class="footer__text">Межрегиональная общественная организация по защите имущественных прав граждан «Центр
+					реструктуризации и списания долгов»
+				</div>
+			</div>
+			<div class="footer__wrap_right">
+				<button href="#!" class="footer__btn btn btn_green" onclick="openDialog('dialog-form', this)">заказать
+					звонок</button>
+
+				<nav class="footer__nav">
+					<ul class="footer__socials socials">
+						<li>
+							<a aria-label="youtube" target="_blank" rel="noopener noreferrer" href="https://youtube.com/">
+								<svg class="icon">
+									<use xlink:href="#icon-youtube"></use>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a aria-label="facebook" target="_blank" rel="noopener noreferrer" href="https://facebook.com/">
+								<svg class="icon">
+									<use xlink:href="#icon-facebook"></use>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a aria-label="vkontakte" target="_blank" rel="noopener noreferrer" href="https://vk.com/">
+								<svg class="icon">
+									<use xlink:href="#icon-vk"></use>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a aria-label="instagram" target="_blank" rel="noopener noreferrer" href="https://instagram.com/">
+								<svg class="icon">
+									<use xlink:href="#icon-instagram"></use>
+								</svg>
+							</a>
+						</li>
+						<li>
+							<a aria-label="odnoklassniki" target="_blank" rel="noopener noreferrer" href="https://ok.ru/">
+								<svg class="icon">
+									<use xlink:href="#icon-ok"></use>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="copirite">© 2015-2019, ООО Центр списания долгов
+		</div>
+
+	</div>
+</footer>
+
+</div><!-- wrapper -->
 
 	<!-- modal -->
 
@@ -804,7 +816,7 @@
 					<form name="Form1" id="form1" action="#" method="POST" enctype="multipart/form-data" novalidate>
 
 						<div class="form__item">
-							<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name"
+							<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name1"
 								value="" required />
 							<p class="error" aria-live="polite"> </p>
 						</div>
@@ -847,19 +859,24 @@
 		</div>
 	</div>
 
+<!-- up -->
+<!-- <button class="btn_up" data-up aria-label="наверх">
+	<svg class="icon icon_up">
+    <use xlink:href="icon.svg#icon-arrow"></use>
+  </svg>
+</button> -->
 
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
-	<script src="https://maps.googleapis.com/maps/api/js?key="></script>
+<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
-	<script src="js/ofi.min.js"></script>
-	<script src="js/swiper.min.js"></script>
-	<script src="js/utils.js"></script>
-	<script src="js/dialog.js"></script>
-	<script src="js/inputmask.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key="></script> -->
 
-	<script src="js/main.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUbEaUfsVp1EqVDmmk5o-9AGwZ39vRSy8"></script>
+
+
+
+<script src="js/vendor.min.js"></script>
+<script src="js/main.min.js"></script>
 
 </body>
-
-</html>  
+</html>
