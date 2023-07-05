@@ -646,7 +646,7 @@
 					<div class="modal__title">Заказать звонок</div>
 					<div class="modal-form__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
 
-					<form name="Form1" id="form1" action="#" method="POST" enctype="multipart/form-data" novalidate>
+					<form name="Form1" action="#" data-message="ok" novalidate data-test>
 
 						<div class="form__item">
 							<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name1"
@@ -655,12 +655,12 @@
 						</div>
 						<div class="form__item">
 							<input type="tel" class="contacts_tel" maxlength="19" name="phone" placeholder="Телефон" id="tel" value=""
-								required />
+								 />
 							<p class="error" aria-live="polite"> </p>
 						</div>
 						<div class="form__item">
 							<input type="tel" class="contacts_email" maxlength="35" name="email" placeholder="Эл. почта" id="email"
-								required />
+								 />
 							<p class="error" aria-live="polite"> </p>
 						</div>
 						<div class="form__item">
@@ -691,6 +691,26 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- ok -->
+
+<div class="dialog-backdrop" onclick="clickBtnClose(this)">
+
+  <div class="hidde modal" id="dialog-ok" role="dialog" aria-labelledby="dialog_label3" aria-modal="true">
+		<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
+			<svg class="icon modal__icon_cancel">
+			<use xlink:href="#icon-close"></use>
+		</svg>
+		</button>
+    <div class="modal__content modal__content--ok">
+
+      <div class="modal__title modal__title--ok" id="dialog_label3">Спасибо!</div>
+      <div class="modal__text modal__text--ok">Мы свяжемся с вами в ближайшее время</div>
+      <div class="" data-message-text></div>
+      <button class="modal__btn btn btn-red" onclick="closeDialog(this)" aria-label="Close">Хорошо</button>
+    </div>
+  </div>
+</div>
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key="></script>

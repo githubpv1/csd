@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ru">
 
@@ -6,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
 	<meta name="keywords" content="">
 	<meta name="description" content="сайт компании ">
 	<title>ЦСД</title>
@@ -393,7 +391,7 @@
 	</header>
 
 <main class="main page" role="main">
-  
+
   <div class="head__body">
     <div class="head__inner">
       <div class="head__we">
@@ -677,7 +675,8 @@
           <div class="how__text col-lg-6 col-xl-12">
             <div class="" data-text="2">
               <p>
-                Далеко-далеко за словесными, горами в стране гласных и согласных живут рыбные тексты.</p>
+                Подготовка
+                заявления в суд</p>
             </div>
           </div>
 
@@ -696,7 +695,8 @@
           <div class="how__text col-lg-6 col-xl-12">
             <div class="" data-text="3">
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, repellendus.</p>
+                Рассмотрение
+                дела в суде</p>
             </div>
           </div>
 
@@ -715,7 +715,8 @@
           <div class="how__text col-lg-6 col-xl-12">
             <div class="" data-text="4">
               <p>
-                Запятых всемогущая даже, подпоясал которое родного его реторический осталось возвращайся?</p>
+                Списание всех
+                  долгов</p>
             </div>
           </div>
         </div>
@@ -982,21 +983,21 @@
               данные и мы свяжемся с вами в
               течении 30 минут</div>
 
-            <form name="Form2" class="row" id="form2" action="#" method="POST" novalidate>
+            <form name="Form2" class="row" action="#" data-test data-message="ok" novalidate>
 
-              <div class="form2__item col-md-6 col-xl-12">
+              <div class="form2__item form__item col-md-6 col-xl-12">
                 <input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name"
                   value="" required />
                 <p class="error" aria-live="polite"> </p>
               </div>
-              <div class="form2__item col-md-6 col-xl-12">
+              <div class="form2__item form__item col-md-6 col-xl-12">
                 <input type="tel" class="contacts_tel" maxlength="19" name="phone" placeholder="Телефон" id="tel2"
-                  value="" required />
+                  value="" />
                 <p class="error" aria-live="polite"> </p>
               </div>
-              <div class="form2__item col-md-6 col-xl-12">
+              <div class="form2__item form__item col-md-6 col-xl-12">
                 <input type="tel" class="contacts_email" maxlength="35" name="email" placeholder="Эл. почта"
-                  id="email2" required />
+                  id="email2" />
                 <p class="error" aria-live="polite"> </p>
               </div>
               <div class="form2__item col-md-6 col-xl-12">
@@ -1187,7 +1188,7 @@
   </section>
 
 </main>
-  
+
 <footer class="footer">
 	<div class="container">
 		<div class="footer__row">
@@ -1270,7 +1271,7 @@
 					<div class="modal__title">Заказать звонок</div>
 					<div class="modal-form__text modal__text">Заполните форму и мы свяжемся с вами в течении 30 минут</div>
 
-					<form name="Form1" id="form1" action="#" method="POST" enctype="multipart/form-data" novalidate>
+					<form name="Form1" action="#" data-message="ok" novalidate data-test>
 
 						<div class="form__item">
 							<input type="text" class="contacts_name" maxlength="20" name="name" placeholder="Ваше Имя" id="name1"
@@ -1279,12 +1280,12 @@
 						</div>
 						<div class="form__item">
 							<input type="tel" class="contacts_tel" maxlength="19" name="phone" placeholder="Телефон" id="tel" value=""
-								required />
+								 />
 							<p class="error" aria-live="polite"> </p>
 						</div>
 						<div class="form__item">
 							<input type="tel" class="contacts_email" maxlength="35" name="email" placeholder="Эл. почта" id="email"
-								required />
+								 />
 							<p class="error" aria-live="polite"> </p>
 						</div>
 						<div class="form__item">
@@ -1315,6 +1316,26 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- ok -->
+
+<div class="dialog-backdrop" onclick="clickBtnClose(this)">
+
+  <div class="hidde modal" id="dialog-ok" role="dialog" aria-labelledby="dialog_label3" aria-modal="true">
+		<button onclick="closeDialog(this)" class="modal__button_close" aria-label="Close">
+			<svg class="icon modal__icon_cancel">
+			<use xlink:href="#icon-close"></use>
+		</svg>
+		</button>
+    <div class="modal__content modal__content--ok">
+
+      <div class="modal__title modal__title--ok" id="dialog_label3">Спасибо!</div>
+      <div class="modal__text modal__text--ok">Мы свяжемся с вами в ближайшее время</div>
+      <div class="" data-message-text></div>
+      <button class="modal__btn btn btn-red" onclick="closeDialog(this)" aria-label="Close">Хорошо</button>
+    </div>
+  </div>
+</div>
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key="></script>
